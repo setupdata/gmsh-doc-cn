@@ -1,0 +1,94 @@
+name: Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deterministic-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Build the digest-pinned tool container
+        run: docker build --file container/Containerfile --tag gmsh-doc-cn:check .
+      - name: Run unit tests
+        run: >-
+          docker run --rm --volume "$PWD:/workspace"
+          --entrypoint python gmsh-doc-cn:check
+          -m unittest discover -v
+      - name: Validate the committed Chinese PO with GNU gettext
+        run: >-
+          docker run --rm --volume "$PWD:/workspace"
+          --entrypoint msgfmt gmsh-doc-cn:check
+          --check --check-header --output-file=/dev/null po/zh_CN.po
+      - name: Fetch and verify fixed upstream archive
+        run: docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check fetch
+      - name: Run fixed-release integration tests after fetching the source
+        run: >-
+          docker run --rm --volume "$PWD:/workspace"
+          --entrypoint python gmsh-doc-cn:check
+          -m unittest discover -v
+      - name: Regenerate deterministic translation baselines
+        run: >-
+          docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check baseline
+          --source upstream/cache/source/gmsh-4.15.2-source
+          --output build/generated
+          --po po/zh_CN.po
+      - name: Compare committed deterministic outputs
+        run: |
+          diff -u po/gmsh.pot build/generated/po/gmsh.pot
+          diff -u po/zh_CN.po build/generated/po/zh_CN.po
+          diff -u glossary/terms.csv build/generated/glossary/terms.csv
+          diff -u benchmarks/units.jsonl build/generated/benchmarks/units.jsonl
+          for name in ordinary-tutorial script-api option-field-plugin format-compile-faq; do
+            diff -u "benchmarks/categories/$name.jsonl" "build/generated/benchmarks/categories/$name.jsonl"
+          done
+          diff -u benchmarks/five-unit-smoke.jsonl build/generated/benchmarks/five-unit-smoke.jsonl
+          diff -u benchmarks/five-unit-validation.json build/generated/benchmarks/five-unit-validation.json
+          diff -u benchmarks/qualification-v1.json build/generated/benchmarks/qualification-v1.json
+          diff -u tests/fixtures/pilot/protected.jsonl build/generated/tests/fixtures/pilot/protected.jsonl
+          diff -u tests/fixtures/pilot/structure.jsonl build/generated/tests/fixtures/pilot/structure.jsonl
+          diff -u tests/fixtures/pilot/code-files.json build/generated/tests/fixtures/pilot/code-files.json
+          diff -u tests/fixtures/pilot/pilot-report.json build/generated/tests/fixtures/pilot/pilot-report.json
+      - name: Build reproducible English manual
+        run: >-
+          docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check
+          reproducible-english
+          --source upstream/cache/source/gmsh-4.15.2-source
+          --output reports/english-artifacts.json
+      - name: Prove the committed smoke unit reaches formal state
+        run: >-
+          docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check status
+          --source upstream/cache/source/gmsh-4.15.2-source
+          --po po/zh_CN.po
+          --reviews reviews/v4.15.2
+          --review-manifest reviews/v4.15.2/batches.json
+          --check-unit bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714
+          --checks-output reports/deterministic-checks.json
+          --output reports/status.json
+      - name: Verify the smoke status result
+        run: |
+          diff -u reviews/v4.15.2/deterministic-checks-v1.json reports/deterministic-checks.json
+          python -c "import json; r=json.load(open('reports/status.json', encoding='utf-8')); assert r['counts'] == {'formal': 1, 'untranslated': 6915}; assert r['obsolete_count'] == 20"
+      - name: Preserve deterministic reports
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: deterministic-reports
+          path: |
+            reports/english-artifacts.json
+            reports/status.json
+            reports/deterministic-checks.json
+            build/generated/tests/fixtures/pilot/pilot-report.json
+            build/generated/benchmarks/qualification-v1.json
+          if-no-files-found: error

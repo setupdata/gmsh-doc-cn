@@ -1,0 +1,8 @@
+[release]
+upstream_version = "4.15.2"
+translation_revision = "r1"
+translation_date = "2026-08-13"
+language = "zh-CN"
+site_base = "/gmsh-doc-cn/"
+channel = "planned"
+published = false

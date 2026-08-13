@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "tool", "warnings"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "tool": {"const": "GNU Texinfo"},
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fingerprint", "message", "relative_file"],
+        "properties": {
+          "fingerprint": {"type": "string", "minLength": 1},
+          "message": {"type": "string", "minLength": 1},
+          "relative_file": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

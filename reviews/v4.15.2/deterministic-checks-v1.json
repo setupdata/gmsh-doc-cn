@@ -1,0 +1,31 @@
+{
+  "algorithm": "deterministic-unit-checks-v1",
+  "all_passed": true,
+  "checked_count": 1,
+  "po_sha256": "2c64ac4d152dc8540dfe786bc61c049b84072b88c02747d6b702e0361610ab97",
+  "schema_version": 1,
+  "structure": {
+    "changed_kinds": [],
+    "differences": [],
+    "passed": true,
+    "source_sha256": "a3bc3e43a55f73bda51fba9a1d8e8c1fd05944ef1166487ddd1df78595b4d9e3",
+    "translated_sha256": "a3bc3e43a55f73bda51fba9a1d8e8c1fd05944ef1166487ddd1df78595b4d9e3"
+  },
+  "units": [
+    {
+      "candidate_hash": "47bfe6a8abac59303e619278c59f7a0f0ed383ede9844fd32a9cc99f0bc8f591",
+      "checks": {
+        "not_fuzzy": true,
+        "po_msgid_current": true,
+        "protected_content": true,
+        "translation_present": true
+      },
+      "context_hash": "6ae3a73d2e1246d60a51329c2424897d324d8aab6c26f133dc5659823335b67a",
+      "msgctxt": "doc/texinfo/gmsh.texi|Overview of Gmsh|heading|Overview of Gmsh",
+      "protected_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "result": "pass",
+      "source_hash": "d1e812b8e704ef3c880505c28f586cabd4a6f548606ec016c0910c660a629393",
+      "unit_id": "bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714"
+    }
+  ]
+}

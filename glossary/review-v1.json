@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "upstream_version": "4.15.2",
+  "term_count": 150,
+  "seed_sha256": "61a60c878d86d84c0ac849b00f0efe037d252c74bdf8d63d14577ddf9fc3c022",
+  "decision_sha256": "694ad8bf308bdbdb938e5e24ec54099fa1a4c29d35e16cf2c64889cc96e37495",
+  "prompt_sha256": "deada0c02d0a67a58bc770f5b8004882f69593d62244c8636d22b7fd21e4bb80",
+  "glossary_sha256": "35415a188ec24d498a5ef6e9dd9b5a4e3f0bcc45fc002b3e0a7369596c349694",
+  "proposal": {
+    "result": "complete",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "xhigh",
+    "run_ids": [
+      "terms_propose_api",
+      "terms_propose_script",
+      "terms_propose_options",
+      "terms_propose_formats",
+      "terms_propose_domain",
+      "terms_propose_build"
+    ]
+  },
+  "language_review": {
+    "result": "accept",
+    "reviewed_count": 150,
+    "issues": [],
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "xhigh",
+    "run_id": "terms_review_language"
+  },
+  "technical_review": {
+    "result": "accept",
+    "reviewed_count": 150,
+    "issues": [],
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "xhigh",
+    "run_id": "terms_review_technical"
+  },
+  "approval_state": "approved",
+  "effective_version": "4.15.2",
+  "paid_api_calls": 0
+}

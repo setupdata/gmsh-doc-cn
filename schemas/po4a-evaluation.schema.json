@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "tool", "version", "evaluation_scope", "execution_status",
+    "container_candidate_version", "tag", "commit", "source_archive",
+    "source_archive_sha256", "format", "upstream_support_status",
+    "evaluation_result", "reason", "warning", "execution", "fallback",
+    "fallback_verification", "paid_api_calls"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "tool": {"const": "po4a"},
+    "version": {"const": "0.74"},
+    "evaluation_scope": {"type": "string", "minLength": 1},
+    "execution_status": {"const": "executed"},
+    "container_candidate_version": {"const": "0.73-2"},
+    "tag": {"const": "v0.74"},
+    "commit": {"pattern": "^[0-9a-f]{40}$"},
+    "source_archive": {"type": "string", "minLength": 1},
+    "source_archive_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "format": {"const": "texinfo"},
+    "upstream_support_status": {"const": "very highly experimental"},
+    "evaluation_result": {"const": "not-admitted"},
+    "reason": {"type": "string", "minLength": 1},
+    "warning": {"type": "string", "minLength": 1},
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "master_files", "source_sha256", "normalized_sha256", "pot_sha256",
+        "source_unit_count", "normalized_unit_count", "source_protected_token_count",
+        "normalized_protected_token_count", "protected_sequence_equal", "structure_equal",
+        "structure_difference_method", "source_structure_record_count",
+        "normalized_structure_record_count", "source_only_structure_records",
+        "normalized_only_structure_records",
+        "byte_identity", "first_protected_difference"
+      ],
+      "properties": {
+        "master_files": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "source_sha256": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["doc/texinfo/gmsh.texi", "doc/texinfo/api.texi"],
+          "properties": {
+            "doc/texinfo/gmsh.texi": {"pattern": "^[0-9a-f]{64}$"},
+            "doc/texinfo/api.texi": {"pattern": "^[0-9a-f]{64}$"}
+          }
+        },
+        "normalized_sha256": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["doc/texinfo/gmsh.texi", "doc/texinfo/api.texi"],
+          "properties": {
+            "doc/texinfo/gmsh.texi": {"pattern": "^[0-9a-f]{64}$"},
+            "doc/texinfo/api.texi": {"pattern": "^[0-9a-f]{64}$"}
+          }
+        },
+        "pot_sha256": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["doc/texinfo/gmsh.texi", "doc/texinfo/api.texi"],
+          "properties": {
+            "doc/texinfo/gmsh.texi": {"pattern": "^[0-9a-f]{64}$"},
+            "doc/texinfo/api.texi": {"pattern": "^[0-9a-f]{64}$"}
+          }
+        },
+        "source_unit_count": {"type": "integer", "minimum": 1},
+        "normalized_unit_count": {"type": "integer", "minimum": 1},
+        "source_protected_token_count": {"type": "integer", "minimum": 1},
+        "normalized_protected_token_count": {"type": "integer", "minimum": 1},
+        "protected_sequence_equal": {"const": false},
+        "structure_equal": {"const": false},
+        "structure_difference_method": {
+          "const": "multiset-of-kind-relative_file-node-value"
+        },
+        "source_structure_record_count": {"type": "integer", "minimum": 1},
+        "normalized_structure_record_count": {"type": "integer", "minimum": 1},
+        "source_only_structure_records": {"type": "integer", "minimum": 1},
+        "normalized_only_structure_records": {"type": "integer", "minimum": 1},
+        "byte_identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["doc/texinfo/gmsh.texi", "doc/texinfo/api.texi"],
+          "properties": {
+            "doc/texinfo/gmsh.texi": {"const": false},
+            "doc/texinfo/api.texi": {"const": false}
+          }
+        },
+        "first_protected_difference": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relative_file", "node", "source_unit_id", "normalized_unit_id",
+            "source", "normalized"
+          ],
+          "properties": {
+            "relative_file": {"type": "string", "minLength": 1},
+            "node": {"type": "string", "minLength": 1},
+            "source_unit_id": {"pattern": "^[0-9a-f]{64}$"},
+            "normalized_unit_id": {"pattern": "^[0-9a-f]{64}$"},
+            "source": {"type": "string", "minLength": 1},
+            "normalized": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "fallback": {"const": "gmsh-doc-cn-custom-texinfo-v1"},
+    "fallback_verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "empty_round_trip_structure", "empty_round_trip_bytes",
+        "current_po_round_trip_structure", "unit_count", "pilot_unit_count"
+      ],
+      "properties": {
+        "empty_round_trip_structure": {"const": "pass"},
+        "empty_round_trip_bytes": {"const": "pass"},
+        "current_po_round_trip_structure": {"const": "pass"},
+        "unit_count": {"type": "integer", "minimum": 1},
+        "pilot_unit_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "paid_api_calls": {"const": 0}
+  }
+}

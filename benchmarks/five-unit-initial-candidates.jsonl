@@ -1,0 +1,5 @@
+{"benchmark_id":"bmk-v1-002","unit_id":"8ad6aa5f8d20f2bd18df6aee394f22245f310881fe2286499b98079eabe2ae48","reference_translation":"虽然 Gmsh 可以交互式地创建和操作几何体，但它绝不是高级 CAD 系统的功能完备替代品。"}
+{"benchmark_id":"bmk-v1-018","unit_id":"1d7ea6a124ccd52e6870ff2f3f7f13713a4326531832ae1e8d6ec04ee9b10d80","reference_translation":"所有以字母 @file{t} 开头的教程都可以使用脚本语言和 API。以字母 @file{x} 开头的扩展教程介绍只能通过 API 使用的功能。"}
+{"benchmark_id":"bmk-v1-031","unit_id":"3811b7fe45c35fb1e3aeaa894dbcdc3424c935bb8eb363c913f0d9e6cdbe5a7b","reference_translation":"创建一个圆环体，由其中心的 3 个坐标和 2 个半径定义。\n附加表达式定义角度开口。@code{Torus} 仅适用于 OpenCASCADE 内核。"}
+{"benchmark_id":"bmk-v1-043","unit_id":"bf1aec61de7057e94d750b94a12acde25b32860588e59c5b625f03db6b9b5792","reference_translation":"关闭 FLTK 图形用户界面。只能在主线程中调用。"}
+{"benchmark_id":"bmk-v1-081","unit_id":"6a452510f40f48048a28a8b9537580bda91cd3603556802edcbf09337a508ec5","reference_translation":"是第 @var{n} 个单元的节点编号列表。节点的顺序见 @ref{Node ordering}。"}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "tool": "po4a",
+  "version": "0.74",
+  "evaluation_scope": "Gmsh 4.15.2 gmsh.texi and api.texi empty-translation normalization",
+  "execution_status": "executed",
+  "container_candidate_version": "0.73-2",
+  "tag": "v0.74",
+  "commit": "5d4c70797ee716aefe259fb57bb9c9c416fd2782",
+  "source_archive": "https://github.com/mquinson/po4a/archive/refs/tags/v0.74.tar.gz",
+  "source_archive_sha256": "6e390eb7707501a86f2e648d78fddb0d211d1e8699aa1ee201176e9f966a798b",
+  "format": "texinfo",
+  "upstream_support_status": "very highly experimental",
+  "evaluation_result": "not-admitted",
+  "reason": "An actual po4a 0.74 empty-translation run changed protected Texinfo tokens and structure records. In particular, it inserted line breaks inside cross-reference targets and @code arguments, so it cannot be the production parser for this manual.",
+  "warning": "The TexInfo module of po4a is not ready for production use, and needs a new maintainer.",
+  "execution": {
+    "master_files": [
+      "doc/texinfo/gmsh.texi",
+      "doc/texinfo/api.texi"
+    ],
+    "source_sha256": {
+      "doc/texinfo/gmsh.texi": "434b4b4e69d920c331e65865e9248e34dd4277b927f2546648a0b5966417ae70",
+      "doc/texinfo/api.texi": "2d4e1831b3074963cf325d6cc63eb891d5baf3eca4a66790b0a80a1d72abf7af"
+    },
+    "normalized_sha256": {
+      "doc/texinfo/gmsh.texi": "d70a49d12cad6fced4411896abf293582c8ee87905f8bbb6f6870850cb1bfd33",
+      "doc/texinfo/api.texi": "4d047493f8622127ca65583ace45914935ee3f952e1105e69e05f6f93f6646b3"
+    },
+    "pot_sha256": {
+      "doc/texinfo/gmsh.texi": "0bf217f20be09648c730f0dc0ad98acece0647d12068a14ee10d5347f9f03fa7",
+      "doc/texinfo/api.texi": "ab0705192e20025fc48f14b2fa77704cfb33216d76b79b74128ea4649e6bff4e"
+    },
+    "source_unit_count": 6916,
+    "normalized_unit_count": 6916,
+    "source_protected_token_count": 20027,
+    "normalized_protected_token_count": 20028,
+    "protected_sequence_equal": false,
+    "structure_equal": false,
+    "structure_difference_method": "multiset-of-kind-relative_file-node-value",
+    "source_structure_record_count": 538,
+    "normalized_structure_record_count": 538,
+    "source_only_structure_records": 61,
+    "normalized_only_structure_records": 61,
+    "byte_identity": {
+      "doc/texinfo/gmsh.texi": false,
+      "doc/texinfo/api.texi": false
+    },
+    "first_protected_difference": {
+      "relative_file": "doc/texinfo/api.texi",
+      "node": "Namespace gmsh/model",
+      "source_unit_id": "52f73367ae04c111f7a9a961259d9a0423d4a369b5e5918cf4674d617ef69bde",
+      "normalized_unit_id": "4f5507d3f0e67c17e9bdab37504ce3acd1472cae717043cbc176ff85721089dd",
+      "source": "@code{dim = -1}",
+      "normalized": "@code{dim\n= -1}"
+    }
+  },
+  "fallback": "gmsh-doc-cn-custom-texinfo-v1",
+  "fallback_verification": {
+    "empty_round_trip_structure": "pass",
+    "empty_round_trip_bytes": "pass",
+    "current_po_round_trip_structure": "pass",
+    "unit_count": 6916,
+    "pilot_unit_count": 85
+  },
+  "paid_api_calls": 0
+}

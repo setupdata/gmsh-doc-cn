@@ -1,0 +1,15 @@
+[upstream]
+name = "Gmsh"
+version = "4.15.2"
+tag = "gmsh_4_15_2"
+commit = "657c8e915f60405e6cad0c8ec7faf812bfff1a60"
+release_date = "2026-03-24"
+source_date_epoch = 1774339200
+archive_name = "gmsh-4.15.2-source.tgz"
+archive_url = "https://gmsh.info/src/gmsh-4.15.2-source.tgz"
+archive_sha256 = "be3f66f225d27ba9fa014f07e83169285da8a051b0e8ab7103d88066b39bdd3e"
+source_directory = "gmsh-4.15.2-source"
+
+[policy]
+canonical_input = "verified-release-archive"
+regenerate_documentation = false

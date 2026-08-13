@@ -1,0 +1,60 @@
+{
+  "ai_generation": {
+    "ai_calls": 0,
+    "model": null,
+    "prompt_hash": null,
+    "run_ids": [],
+    "status": "not_run"
+  },
+  "algorithm_version": "sha256-stratified-v1",
+  "human_approval": "pending",
+  "language_review": "not_evaluated",
+  "manifest_sha256": "d6c1ae6278d7e90716c7ef199ececf9d840d910bccf51529a404528aec90a8b9",
+  "pot_sha256": "074f99e5f838d76d3b625306fd3b6234e0aa2838e9a5730f7c9235b836868d44",
+  "publish_eligible": false,
+  "qualification_state": "selection_qualified_pending_review",
+  "quality_counts": {
+    "critical": "not_evaluated",
+    "major": "not_evaluated",
+    "minor": "not_evaluated",
+    "unresolved": "not_evaluated"
+  },
+  "quota_plan": {
+    "api": 13,
+    "compile": 4,
+    "faq": 6,
+    "fields": 8,
+    "formats": 10,
+    "options": 10,
+    "plugins": 7,
+    "prose": 15,
+    "scripting": 12,
+    "tutorial": 15
+  },
+  "report_kind": "benchmark_qualification",
+  "schema_version": 1,
+  "seed": "gmsh-4.15.2-benchmark-v1",
+  "selected_count": 100,
+  "selected_counts": {
+    "api": 13,
+    "compile": 4,
+    "faq": 6,
+    "fields": 8,
+    "formats": 10,
+    "options": 10,
+    "plugins": 7,
+    "prose": 15,
+    "scripting": 12,
+    "tutorial": 15
+  },
+  "selection_checks": {
+    "duplicate_free": true,
+    "protected_hash_valid": true,
+    "quota_exact": true,
+    "selection_eligible": true,
+    "structure_valid": true,
+    "unit_id_unique": true
+  },
+  "technical_review": "not_evaluated",
+  "upstream_version": "4.15.2"
+}

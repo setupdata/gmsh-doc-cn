@@ -1,0 +1,6 @@
+[site]
+base = "/gmsh-doc-cn/"
+version = "4.15.2"
+default_language = "zh-cn"
+html_language_zh = "zh-CN"
+html_language_en = "en"

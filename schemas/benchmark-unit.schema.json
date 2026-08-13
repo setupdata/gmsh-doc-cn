@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "benchmark_id", "unit_id", "category", "subcategory",
+    "source_file", "node", "structure_path", "role", "semantic_key", "msgctxt",
+    "msgid", "msgid_sha256", "source_hash", "context_hash", "protected_hash",
+    "protected_values", "selection_rank", "selection_method",
+    "reference_translation", "reference_translation_status"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "benchmark_id": {"pattern": "^bmk-v1-[0-9]{3}$"},
+    "unit_id": {"pattern": "^[0-9a-f]{64}$"},
+    "category": {"enum": ["ordinary_tutorial", "script_api", "option_field_plugin", "formats_compile_faq"]},
+    "subcategory": {"enum": ["prose", "tutorial", "scripting", "api", "options", "fields", "plugins", "formats", "compile", "faq"]},
+    "source_file": {"type": "string", "minLength": 1},
+    "node": {"type": "string", "minLength": 1},
+    "structure_path": {"type": "string", "minLength": 1},
+    "role": {"type": "string", "minLength": 1},
+    "semantic_key": {"type": "string", "minLength": 1},
+    "msgctxt": {"type": "string", "minLength": 1},
+    "msgid": {"type": "string", "minLength": 1},
+    "msgid_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "source_hash": {"pattern": "^[0-9a-f]{64}$"},
+    "context_hash": {"pattern": "^[0-9a-f]{64}$"},
+    "protected_hash": {"pattern": "^[0-9a-f]{64}$"},
+    "protected_values": {"type": "array", "items": {"type": "string"}},
+    "selection_rank": {"pattern": "^[0-9a-f]{64}$"},
+    "selection_method": {"const": "sha256-stratified-v1"},
+    "reference_translation": {"type": "string"},
+    "reference_translation_status": {"enum": ["pending", "accepted"]}
+  }
+}

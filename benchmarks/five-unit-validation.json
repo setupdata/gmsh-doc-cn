@@ -1,0 +1,37 @@
+{
+  "all_passed": true,
+  "checked_count": 5,
+  "checks": [
+    {
+      "benchmark_id": "bmk-v1-002",
+      "candidate_sha256": "86d5a67f8fa4d1695bc88838947ae5a0335c7083e5cb28b32a1a8b84bfd6853f",
+      "protected_content": "pass",
+      "unit_id": "8ad6aa5f8d20f2bd18df6aee394f22245f310881fe2286499b98079eabe2ae48"
+    },
+    {
+      "benchmark_id": "bmk-v1-018",
+      "candidate_sha256": "a6a073c0826c3724d5ba8237128006f98c36588f8ff352aec574ab2069d6c4b2",
+      "protected_content": "pass",
+      "unit_id": "1d7ea6a124ccd52e6870ff2f3f7f13713a4326531832ae1e8d6ec04ee9b10d80"
+    },
+    {
+      "benchmark_id": "bmk-v1-031",
+      "candidate_sha256": "76eced01eebf9f0f1dfa12595fcece0a7cc2e350e0a117389b2c6367fad197d2",
+      "protected_content": "pass",
+      "unit_id": "3811b7fe45c35fb1e3aeaa894dbcdc3424c935bb8eb363c913f0d9e6cdbe5a7b"
+    },
+    {
+      "benchmark_id": "bmk-v1-043",
+      "candidate_sha256": "5322c52bb4ba177e54110649de5980658880e3582f321cc4b464f5bf30e8773c",
+      "protected_content": "pass",
+      "unit_id": "bf1aec61de7057e94d750b94a12acde25b32860588e59c5b625f03db6b9b5792"
+    },
+    {
+      "benchmark_id": "bmk-v1-081",
+      "candidate_sha256": "2be8a7d8cd09b4609f253c59885d3105efea7cfcd19995d440bc903b6fc30f63",
+      "protected_content": "pass",
+      "unit_id": "6a452510f40f48048a28a8b9537580bda91cd3603556802edcbf09337a508ec5"
+    }
+  ],
+  "schema_version": 1
+}

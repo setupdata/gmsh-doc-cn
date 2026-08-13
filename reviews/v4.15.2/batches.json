@@ -1,0 +1,30 @@
+{
+  "batches": [
+    {
+      "batch": "five-unit-smoke-v1",
+      "file": "five-unit-smoke-v1.jsonl",
+      "run_ids": [
+        "smoke_rereview_language",
+        "smoke_rereview_technical",
+        "smoke_review_language",
+        "smoke_review_technical",
+        "smoke_revise",
+        "smoke_translate_1",
+        "smoke_translate_2",
+        "smoke_translate_3",
+        "smoke_translate_4",
+        "smoke_translate_5"
+      ]
+    },
+    {
+      "batch": "formal-smoke-v1",
+      "file": "formal-smoke-v1.jsonl",
+      "run_ids": [
+        "formal-smoke-language",
+        "formal-smoke-technical",
+        "formal-smoke-translation"
+      ]
+    }
+  ],
+  "schema_version": 1
+}

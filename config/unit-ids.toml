@@ -1,0 +1,3 @@
+# Explicit overrides are added only if the v1 identity algorithm cannot
+# distinguish two structural units. The Gmsh 4.15.2 baseline needs none.
+[overrides]

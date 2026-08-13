@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://setupdata.github.io/gmsh-doc-cn/schemas/term-review.schema.json",
+  "title": "Gmsh Chinese terminology review summary",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "upstream_version",
+    "term_count",
+    "glossary_sha256",
+    "proposal",
+    "language_review",
+    "technical_review",
+    "approval_state",
+    "paid_api_calls"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "upstream_version": {"const": "4.15.2"},
+    "term_count": {"const": 150},
+    "glossary_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "approval_state": {"const": "approved"},
+    "paid_api_calls": {"const": 0},
+    "proposal": {"type": "object"},
+    "language_review": {
+      "type": "object",
+      "required": ["result", "reviewed_count", "issues"],
+      "properties": {
+        "result": {"const": "accept"},
+        "reviewed_count": {"const": 150},
+        "issues": {"type": "array", "maxItems": 0}
+      }
+    },
+    "technical_review": {
+      "type": "object",
+      "required": ["result", "reviewed_count", "issues"],
+      "properties": {
+        "result": {"const": "accept"},
+        "reviewed_count": {"const": 150},
+        "issues": {"type": "array", "maxItems": 0}
+      }
+    }
+  }
+}

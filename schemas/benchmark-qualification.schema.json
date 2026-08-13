@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "report_kind", "algorithm_version", "seed", "upstream_version", "pot_sha256", "manifest_sha256", "quota_plan", "selected_count", "selected_counts", "selection_checks", "qualification_state", "ai_generation", "language_review", "technical_review", "quality_counts", "human_approval", "publish_eligible"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "report_kind": {"const": "benchmark_qualification"},
+    "algorithm_version": {"const": "sha256-stratified-v1"},
+    "seed": {"type": "string", "minLength": 1},
+    "upstream_version": {"const": "4.15.2"},
+    "pot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "quota_plan": {"type": "object"},
+    "selected_count": {"const": 100},
+    "selected_counts": {"type": "object"},
+    "selection_checks": {"type": "object"},
+    "qualification_state": {"const": "selection_qualified_pending_review"},
+    "ai_generation": {"type": "object"},
+    "language_review": {"const": "not_evaluated"},
+    "technical_review": {"const": "not_evaluated"},
+    "quality_counts": {"type": "object"},
+    "human_approval": {"const": "pending"},
+    "publish_eligible": {"const": false}
+  }
+}
