@@ -10,12 +10,17 @@ from pathlib import Path
 from typing import Mapping
 
 from .benchmark import (
-    qualification_report,
     select_benchmark,
     select_smoke_benchmark,
     validate_smoke_candidates,
     write_jsonl,
     write_report,
+)
+from .benchmark_evidence import (
+    ROLE_PROMPT_FILES,
+    bind_reference_translations,
+    read_jsonl,
+    reviewed_qualification_report,
 )
 from .catalog import (
     TranslationUnit,
@@ -26,6 +31,8 @@ from .catalog import (
     write_po,
 )
 from .pilot import select_pilot_units, validate_pilot_files, validate_pilot_manifest
+from .review import read_review_batches, review_evidence_sha256
+from .semantic_rules import semantic_rule_hashes
 from .structure import compare_structures, scan_structure
 from .terminology import (
     apply_term_decisions,
@@ -68,6 +75,11 @@ def generate_baseline(
     terminology_decisions: Path | None = None,
     existing_terms: Path | None = None,
     smoke_candidates: Path | None = None,
+    benchmark_initial_candidates: Path | None = None,
+    benchmark_final_candidates: Path | None = None,
+    benchmark_review_directory: Path | None = None,
+    benchmark_review_manifest: Path | None = None,
+    benchmark_approval: Path | None = None,
 ) -> dict[str, object]:
     """Generate POT, PO normalization, pilot evidence, terms and benchmark manifests."""
 
@@ -217,6 +229,34 @@ def generate_baseline(
         raise ValueError("translation round trip changed protected structure or source bytes")
 
     benchmark = select_benchmark(units)
+    units_by_id = {unit.unit_id: unit for unit in units}
+    benchmark_validation: dict[str, object] | None = None
+    initial_reference_rows: list[dict[str, object]] = []
+    initial_reference_validation: dict[str, object] | None = None
+    if benchmark_final_candidates is not None and Path(benchmark_final_candidates).is_file():
+        benchmark, benchmark_validation = bind_reference_translations(
+            benchmark,
+            read_jsonl(benchmark_final_candidates),
+            units_by_id,
+        )
+        _write_json(
+            benchmark_validation,
+            output_root / "benchmarks" / "reference-validation-v1.json",
+        )
+    if any(row["reference_translation_status"] != "accepted" for row in benchmark):
+        raise ValueError("the 100-unit benchmark references have not been frozen")
+    if benchmark_initial_candidates is not None and Path(benchmark_initial_candidates).is_file():
+        initial_reference_rows = read_jsonl(benchmark_initial_candidates)
+        initial_reference_validation = validate_smoke_candidates(
+            benchmark,
+            initial_reference_rows,
+            units_by_id,
+            require_protected_content=False,
+        )
+        _write_json(
+            initial_reference_validation,
+            output_root / "benchmarks" / "reference-initial-validation-v1.json",
+        )
     write_jsonl(benchmark, output_root / "benchmarks" / "units.jsonl")
     groups = {
         "ordinary-tutorial": {"ordinary_tutorial"},
@@ -239,7 +279,7 @@ def generate_baseline(
             if line
         ]
         smoke_validation = validate_smoke_candidates(
-            smoke, candidates, {unit.unit_id: unit for unit in units}
+            smoke, candidates, units_by_id
         )
         _write_json(
             smoke_validation,
@@ -253,15 +293,65 @@ def generate_baseline(
     else:
         terms = merge_term_decisions(terms, existing_terms)
     write_terms_csv(terms, output_root / "glossary" / "terms.csv")
+    repository_root = Path(upstream_manifest).resolve().parent.parent
+    if (
+        benchmark_initial_candidates is None
+        or not Path(benchmark_initial_candidates).is_file()
+        or benchmark_final_candidates is None
+        or benchmark_review_directory is None
+        or benchmark_review_manifest is None
+        or not Path(benchmark_review_manifest).is_file()
+        or benchmark_validation is None
+        or initial_reference_validation is None
+    ):
+        raise ValueError("benchmark review evidence inputs are incomplete")
+    benchmark_review_directory = Path(benchmark_review_directory)
+    benchmark_review_manifest = Path(benchmark_review_manifest)
+    benchmark_reviews = read_review_batches(
+        benchmark_review_directory,
+        benchmark_review_manifest,
+    )
+    evidence_hash = review_evidence_sha256(
+        benchmark_review_directory,
+        benchmark_review_manifest,
+    )
+    approval: dict[str, object] | None = None
+    if benchmark_approval is not None and Path(benchmark_approval).is_file():
+        approval_rows = read_jsonl(benchmark_approval)
+        if len(approval_rows) != 1:
+            raise ValueError("benchmark approval file must contain exactly one record")
+        approval = approval_rows[0]
     manifest_hash = file_sha256(upstream_manifest)
-    report = qualification_report(
+    prompt_hashes = {
+        role: file_sha256(repository_root / prompt_file)
+        for role, prompt_file in ROLE_PROMPT_FILES.items()
+    }
+    rules_hashes = semantic_rule_hashes(
+        units,
+        repository_root / "config" / "translation-rules.toml",
+        repository_root / "glossary" / "terms.csv",
+    )
+    glossary_hash = file_sha256(repository_root / "glossary" / "terms.csv")
+    report = reviewed_qualification_report(
         benchmark,
+        initial_reference_rows,
+        benchmark_reviews,
+        approval,
+        units_by_id=units_by_id,
+        current_rules_hashes=rules_hashes,
+        current_glossary_hash=glossary_hash,
+        expected_prompt_hashes=prompt_hashes,
         pot_sha256=file_sha256(pot),
         manifest_sha256=manifest_hash,
+        initial_reference_sha256=file_sha256(benchmark_initial_candidates),
+        reference_sha256=file_sha256(benchmark_final_candidates),
+        review_manifest_sha256=file_sha256(benchmark_review_manifest),
+        review_evidence_sha256=evidence_hash,
+        initial_reference_validation=initial_reference_validation,
+        reference_validation=benchmark_validation,
     )
     write_report(report, output_root / "benchmarks" / "qualification-v1.json")
 
-    repository_root = Path(upstream_manifest).resolve().parent.parent
     tool_lock_path = repository_root / "container" / "tool-versions.lock"
     html_anchor_path = repository_root / "tests" / "fixtures" / "pilot" / "html-anchors.json"
     warning_baseline_path = repository_root / "tests" / "baselines" / "texinfo-warnings.json"
@@ -299,7 +389,7 @@ def generate_baseline(
         "round_trip": "pass",
         "round_trip_byte_identity": byte_identity,
         "round_trip_comparisons": round_trip_comparisons,
-        "qualification_state": report["qualification_state"],
+        "benchmark_qualification_state": report["qualification_state"],
     }
     _write_json(
         summary,

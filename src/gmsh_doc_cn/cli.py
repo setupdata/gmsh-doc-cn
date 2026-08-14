@@ -66,6 +66,17 @@ def command_baseline(args: argparse.Namespace) -> None:
         ),
         existing_terms=Path(args.terms) if args.terms else None,
         smoke_candidates=Path(args.smoke_candidates) if args.smoke_candidates else None,
+        benchmark_initial_candidates=(
+            Path(args.benchmark_initial) if args.benchmark_initial else None
+        ),
+        benchmark_final_candidates=(Path(args.benchmark_final) if args.benchmark_final else None),
+        benchmark_review_directory=(
+            Path(args.benchmark_review_directory) if args.benchmark_review_directory else None
+        ),
+        benchmark_review_manifest=(
+            Path(args.benchmark_review_manifest) if args.benchmark_review_manifest else None
+        ),
+        benchmark_approval=(Path(args.benchmark_approval) if args.benchmark_approval else None),
     )
     print(json.dumps(result, ensure_ascii=False, sort_keys=True))
 
@@ -254,6 +265,22 @@ def parser() -> argparse.ArgumentParser:
     baseline.add_argument("--terms", default="glossary/terms.csv")
     baseline.add_argument(
         "--smoke-candidates", default="benchmarks/five-unit-candidates.jsonl"
+    )
+    baseline.add_argument(
+        "--benchmark-initial", default="benchmarks/reference-initial-v1.jsonl"
+    )
+    baseline.add_argument(
+        "--benchmark-final", default="benchmarks/reference-final-v1.jsonl"
+    )
+    baseline.add_argument(
+        "--benchmark-review-directory", default="reviews/v4.15.2-benchmark"
+    )
+    baseline.add_argument(
+        "--benchmark-review-manifest",
+        default="reviews/v4.15.2-benchmark/batches.json",
+    )
+    baseline.add_argument(
+        "--benchmark-approval", default="benchmarks/approvals.jsonl"
     )
     baseline.set_defaults(function=command_baseline)
 

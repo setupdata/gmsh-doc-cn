@@ -53,8 +53,15 @@ class ReviewRecordTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "SHA-256"):
             validate_review_record(invalid)
         invalid = dict(record)
+        invalid["result"] = "revise"
         invalid["issues"] = [{"severity": "minor"}]
         with self.assertRaisesRegex(ValueError, "code"):
+            validate_review_record(invalid)
+        invalid = dict(record)
+        invalid["issues"] = [
+            {"code": "language.wording", "severity": "minor", "message": "needs revision"}
+        ]
+        with self.assertRaisesRegex(ValueError, "must not contain issues"):
             validate_review_record(invalid)
         invalid = dict(record)
         invalid["schema_version"] = True

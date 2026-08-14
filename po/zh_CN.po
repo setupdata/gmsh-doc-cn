@@ -25787,35 +25787,35 @@ msgstr "Gmsh 概述"
 #: doc/texinfo/gmsh.texi
 msgctxt "doc/texinfo/gmsh.texi|Overview of Gmsh|index|Introduction"
 msgid "Introduction"
-msgstr ""
+msgstr "简介"
 
 #. unit_id: 66a1ab1e87e085a88723e38e6974b4f21031fe289f4a8d29ad28558252bd18c4
 #. source_hash: e3d6f3eeb4d971ee593f9352c1408c27806b887881990577d8c5e2f49713debe
 #: doc/texinfo/gmsh.texi
 msgctxt "doc/texinfo/gmsh.texi|Overview of Gmsh|index|Overview"
 msgid "Overview"
-msgstr ""
+msgstr "概览"
 
 #. unit_id: 934aecb49b901810f1437cfd527924577279b5892614e06d90a0cafa79cb36b5
 #. source_hash: efd2a73d5d5d06b1ea297e7bc56e3d892880e03b8f63a3001dfac7553fd8d7cd
 #: doc/texinfo/gmsh.texi
 msgctxt "doc/texinfo/gmsh.texi|Overview of Gmsh|paragraph|8d90d3bd844a82d009b5a9ee2ba6300104fc662ceefb640087962c4660d62c7e"
 msgid "Gmsh is a three-dimensional finite element mesh generator with a\nbuild-in CAD engine and post-processor. Its design goal is to provide a\nfast, light and user-friendly meshing tool with parametric input and\nflexible visualization capabilities."
-msgstr ""
+msgstr "Gmsh 是一个三维有限元网格生成器，内置 CAD 引擎和后处理器。其设计目标是提供一种快速、轻量且易于使用的网格剖分工具，支持参数化输入和灵活的可视化功能。"
 
 #. unit_id: 2f7160b7d621cf34053e7803634b947f503542b1b3766424edbb756455e83923
 #. source_hash: bf4680c2cdb7114f4188910e12f75afb8d064b2adabc4f257187e3688c8e1bd1
 #: doc/texinfo/gmsh.texi
 msgctxt "doc/texinfo/gmsh.texi|Overview of Gmsh|paragraph|e161e2cdc2ccad6d5f34ae83b12e783c3d21303fdd6d4fcc588000ead976b24f"
 msgid "Gmsh is built around four modules (geometry, mesh, solver and\npost-processing), which can be controlled with the graphical user\ninterface (GUI; see @ref{Gmsh graphical user interface}), from the\ncommand line (@pxref{Gmsh command-line interface}), using text files\nwritten in Gmsh's own scripting language (@file{.geo} files; see\n@ref{Gmsh scripting language}), or through the C++, C, Python, Julia and\nFortran application programming interface (API; see @ref{Gmsh\napplication programming interface})."
-msgstr ""
+msgstr "Gmsh 围绕四个模块构建：几何、网格、求解器和后处理。这些模块可以通过图形用户界面（GUI；参见 @ref{Gmsh graphical user interface}）、命令行（@pxref{Gmsh command-line interface}）、使用 Gmsh 自有脚本语言编写的文本文件（@file{.geo} 文件；参见 @ref{Gmsh scripting language}），或者通过 C++、C、Python、Julia 和 Fortran 应用程序编程接口（API；参见 @ref{Gmsh\napplication programming interface}）进行控制。"
 
 #. unit_id: aad666639ab4f3aa412d1e1eae256e0cac09f6132bed4f6b6577bba1578bdf35
 #. source_hash: 93a8460ee1645bbadb9b07f9e103be76af2d0fb14aeca80ab67454d23d061694
 #: doc/texinfo/gmsh.texi
 msgctxt "doc/texinfo/gmsh.texi|Overview of Gmsh|paragraph|2719370f925cbac4357d5dd22baa3fa734dd6d7a35051844bb95a3a632ff5671"
 msgid "A brief description of the four modules is given hereafter, before an\noverview of what Gmsh does best (... and what it is not so good at), and\nsome practical information on how to install and run Gmsh on your\ncomputer."
-msgstr ""
+msgstr "下面先简要介绍这四个模块，然后概述 Gmsh 最擅长的功能（以及不太擅长的部分），并提供一些有关如何在计算机上安装和运行 Gmsh 的实用信息。"
 
 #. unit_id: 86278c44b103d65a15590cf113fa1908f42f50e7d1d0034ebbe8bbd9015b8b3a
 #. source_hash: baadac0a8ba33208ef8ee96bcf1269ab09edb685c3155cb7c9aa89214adf315d

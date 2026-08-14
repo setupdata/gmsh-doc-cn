@@ -8,7 +8,11 @@ from pathlib import Path
 
 from gmsh_doc_cn.catalog import extract_tree, read_po_catalog
 from gmsh_doc_cn.deterministic_checks import check_result_map, run_deterministic_checks
-from gmsh_doc_cn.review import read_review_batches, validate_review_record
+from gmsh_doc_cn.review import (
+    read_review_batches,
+    review_evidence_sha256,
+    validate_review_record,
+)
 from gmsh_doc_cn.schema_validation import validate_schema
 from gmsh_doc_cn.semantic_rules import semantic_rule_hashes
 from gmsh_doc_cn.status import candidate_hash, reduce_status
@@ -131,10 +135,41 @@ class RepositoryBaselineTests(unittest.TestCase):
 
         batches = read_json("reviews/v4.15.2/batches.json")
         validate_file(batches, "schemas/review-batches.schema.json")
-        self.assertEqual(
-            len(read_review_batches(ROOT / "reviews/v4.15.2", ROOT / "reviews/v4.15.2/batches.json")),
-            30,
+        production_reviews = read_review_batches(
+            ROOT / "reviews/v4.15.2", ROOT / "reviews/v4.15.2/batches.json"
         )
+        self.assertEqual(len(production_reviews), 48)
+        overview = [
+            record for record in production_reviews if record["batch"] == "overview-of-gmsh-v1"
+        ]
+        self.assertEqual(len(overview), 18)
+        self.assertEqual(
+            {record["role"] for record in overview},
+            {"translation", "revision", "language_review", "technical_review"},
+        )
+        overview_unit_ids = {
+            "bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714",
+            "78fc6b746ad6b5909c817f41037c0b297e56b9c1f734834b5243ed8ddf62c833",
+            "66a1ab1e87e085a88723e38e6974b4f21031fe289f4a8d29ad28558252bd18c4",
+            "934aecb49b901810f1437cfd527924577279b5892614e06d90a0cafa79cb36b5",
+            "2f7160b7d621cf34053e7803634b947f503542b1b3766424edbb756455e83923",
+            "aad666639ab4f3aa412d1e1eae256e0cac09f6132bed4f6b6577bba1578bdf35",
+        }
+        self.assertEqual(
+            {
+                record["unit_id"]
+                for record in production_reviews
+                if record["unit_id"] in overview_unit_ids
+            },
+            overview_unit_ids,
+        )
+        reused_title = [
+            record
+            for record in production_reviews
+            if record["unit_id"]
+            == "bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714"
+        ]
+        self.assertEqual({record["batch"] for record in reused_title}, {"formal-smoke-v1"})
 
         initial = read_jsonl("benchmarks/five-unit-initial-candidates.jsonl")
         final = read_jsonl("benchmarks/five-unit-candidates.jsonl")
@@ -236,13 +271,9 @@ class RepositoryBaselineTests(unittest.TestCase):
             self.skipTest("verified Gmsh source archive is not present in the local cache")
         extraction = extract_tree(source)
         po = read_po_catalog(ROOT / "po/zh_CN.po")
-        records = [
-            record
-            for record in read_review_batches(
-                ROOT / "reviews/v4.15.2", ROOT / "reviews/v4.15.2/batches.json"
-            )
-            if record["batch"] == "formal-smoke-v1"
-        ]
+        records = read_review_batches(
+            ROOT / "reviews/v4.15.2", ROOT / "reviews/v4.15.2/batches.json"
+        )
         per_unit_rules = semantic_rule_hashes(
             extraction.units,
             ROOT / "config/translation-rules.toml",
@@ -250,9 +281,16 @@ class RepositoryBaselineTests(unittest.TestCase):
         )
         for record in records:
             self.assertEqual(record["rules_hash"], per_unit_rules[record["unit_id"]])
-        formal_unit = "bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714"
+        formal_units = [
+            "bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714",
+            "78fc6b746ad6b5909c817f41037c0b297e56b9c1f734834b5243ed8ddf62c833",
+            "66a1ab1e87e085a88723e38e6974b4f21031fe289f4a8d29ad28558252bd18c4",
+            "934aecb49b901810f1437cfd527924577279b5892614e06d90a0cafa79cb36b5",
+            "2f7160b7d621cf34053e7803634b947f503542b1b3766424edbb756455e83923",
+            "aad666639ab4f3aa412d1e1eae256e0cac09f6132bed4f6b6577bba1578bdf35",
+        ]
         check_report = run_deterministic_checks(
-            source, ROOT / "po/zh_CN.po", [formal_unit]
+            source, ROOT / "po/zh_CN.po", formal_units
         )
         validate_file(check_report, "schemas/deterministic-checks.schema.json")
         self.assertEqual(
@@ -271,7 +309,7 @@ class RepositoryBaselineTests(unittest.TestCase):
             current_glossary_hash=sha256(ROOT / "glossary/terms.csv"),
             obsolete_count=po.obsolete_count,
         )
-        self.assertEqual(report["counts"], {"formal": 1, "untranslated": 6915})
+        self.assertEqual(report["counts"], {"formal": 6, "untranslated": 6910})
         self.assertEqual(report["obsolete_count"], 20)
         validate_file(report, "schemas/status.schema.json")
 
@@ -286,26 +324,124 @@ class RepositoryBaselineTests(unittest.TestCase):
         )
         self.assertFalse(any(value.startswith("Christophe Geuzaine") for value in msgids))
 
-    def test_100_unit_report_only_qualifies_selection(self) -> None:
+    def test_100_unit_model_configuration_is_qualified_and_hash_bound(self) -> None:
         rows = read_jsonl("benchmarks/units.jsonl")
         report = read_json("benchmarks/qualification-v1.json")
+        initial_validation = read_json("benchmarks/reference-initial-validation-v1.json")
+        validation = read_json("benchmarks/reference-validation-v1.json")
+        approvals = read_jsonl("benchmarks/approvals.jsonl")
         validate_file(report, "schemas/benchmark-qualification.schema.json")
+        validate_file(
+            initial_validation,
+            "schemas/benchmark-initial-reference-validation.schema.json",
+        )
+        validate_file(validation, "schemas/benchmark-reference-validation.schema.json")
+        self.assertEqual(len(approvals), 1)
+        validate_file(approvals[0], "schemas/benchmark-approval.schema.json")
         for row in rows:
             validate_file(row, "schemas/benchmark-unit.schema.json")
         self.assertEqual(len(rows), 100)
         self.assertEqual(len({row["unit_id"] for row in rows}), 100)
+        self.assertTrue(all(row["reference_translation"] for row in rows))
+        self.assertTrue(all(row["reference_translation_status"] == "accepted" for row in rows))
         self.assertEqual(report["selected_count"], 100)
         self.assertEqual(report["selected_counts"], report["quota_plan"])
+        self.assertEqual(report["qualification_state"], "qualified")
+        self.assertEqual(report["ai_generation"]["status"], "complete")
+        self.assertEqual(report["ai_generation"]["ai_calls"], 7)
+        self.assertEqual(report["language_review"], "accept")
+        self.assertEqual(report["technical_review"], "accept")
         self.assertEqual(
-            report["qualification_state"],
-            "selection_qualified_pending_review",
+            report["quality_counts"],
+            {"critical": 0, "major": 0, "minor": 0, "unresolved": 0},
         )
-        self.assertEqual(report["ai_generation"]["status"], "not_run")
-        self.assertEqual(report["ai_generation"]["ai_calls"], 0)
-        self.assertEqual(report["human_approval"], "pending")
+        self.assertEqual(report["human_approval"], "approved")
         self.assertFalse(report["publish_eligible"])
         self.assertEqual(report["pot_sha256"], sha256(ROOT / "po/gmsh.pot"))
         self.assertEqual(report["manifest_sha256"], sha256(ROOT / "upstream/manifest.toml"))
+        self.assertEqual(
+            report["initial_reference_sha256"],
+            sha256(ROOT / "benchmarks/reference-initial-v1.jsonl"),
+        )
+        self.assertEqual(
+            report["reference_sha256"], sha256(ROOT / "benchmarks/reference-final-v1.jsonl")
+        )
+        self.assertEqual(
+            report["review_manifest_sha256"],
+            sha256(ROOT / "reviews/v4.15.2-benchmark/batches.json"),
+        )
+        self.assertEqual(
+            report["review_evidence_sha256"],
+            review_evidence_sha256(
+                ROOT / "reviews/v4.15.2-benchmark",
+                ROOT / "reviews/v4.15.2-benchmark/batches.json",
+            ),
+        )
+        self.assertEqual(initial_validation["checked_count"], 100)
+        self.assertFalse(initial_validation["all_passed"])
+        self.assertEqual(
+            sum(
+                item["protected_content"] == "fail"
+                for item in initial_validation["checks"]
+            ),
+            5,
+        )
+        self.assertEqual(validation["checked_count"], 100)
+        self.assertTrue(validation["all_passed"])
+
+        review_manifest = read_json("reviews/v4.15.2-benchmark/batches.json")
+        validate_file(review_manifest, "schemas/review-batches.schema.json")
+        review_records = read_review_batches(
+            ROOT / "reviews/v4.15.2-benchmark",
+            ROOT / "reviews/v4.15.2-benchmark/batches.json",
+        )
+        self.assertEqual(len(review_records), report["review_record_count"])
+        self.assertEqual(len(review_records), 396)
+        by_unit: dict[str, list[dict]] = {}
+        for record in review_records:
+            validate_file(record, "schemas/review-record.schema.json")
+            by_unit.setdefault(record["unit_id"], []).append(record)
+        for row in rows:
+            current_hash = candidate_hash(row["reference_translation"])
+            current = [
+                record
+                for record in by_unit[row["unit_id"]]
+                if record["candidate_hash"] == current_hash
+            ]
+            self.assertTrue(
+                any(
+                    record["role"] in {"translation", "revision"}
+                    and record["result"] == "accept"
+                    for record in current
+                )
+            )
+            language_runs = {
+                record["run_id"]
+                for record in current
+                if record["role"] == "language_review" and record["result"] == "accept"
+            }
+            technical_runs = {
+                record["run_id"]
+                for record in current
+                if record["role"] == "technical_review" and record["result"] == "accept"
+            }
+            self.assertTrue(language_runs)
+            self.assertTrue(technical_runs)
+            self.assertTrue(language_runs.isdisjoint(technical_runs))
+            self.assertFalse(
+                any(record["result"] in {"revise", "unresolved"} for record in current)
+            )
+            self.assertLessEqual(max(record["round"] for record in current), 1)
+
+        approval = approvals[0]
+        self.assertEqual(
+            approval["initial_reference_sha256"], report["initial_reference_sha256"]
+        )
+        self.assertEqual(approval["reference_sha256"], report["reference_sha256"])
+        self.assertEqual(approval["review_manifest_sha256"], report["review_manifest_sha256"])
+        self.assertEqual(approval["review_evidence_sha256"], report["review_evidence_sha256"])
+        self.assertEqual(approval["model"], report["ai_generation"]["model"])
+        self.assertEqual(approval["reasoning_effort"], report["ai_generation"]["reasoning_effort"])
 
         expected_category_sizes = {
             "ordinary-tutorial": 30,

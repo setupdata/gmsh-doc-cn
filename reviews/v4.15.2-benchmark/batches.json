@@ -1,0 +1,41 @@
+{
+  "batches": [
+    {
+      "batch": "benchmark-v1",
+      "file": "benchmark-v1.jsonl",
+      "run_ids": [
+        "benchmark-final-language-001-017",
+        "benchmark-final-language-018-034",
+        "benchmark-final-language-035-051",
+        "benchmark-final-language-052-068",
+        "benchmark-final-language-069-084",
+        "benchmark-final-language-085-100",
+        "benchmark-final-language-rereview-054-074",
+        "benchmark-final-technical-001-020",
+        "benchmark-final-technical-021-040",
+        "benchmark-final-technical-041-060",
+        "benchmark-final-technical-061-080",
+        "benchmark-final-technical-081-100",
+        "benchmark-initial-language-001-017",
+        "benchmark-initial-language-018-034",
+        "benchmark-initial-language-035-051",
+        "benchmark-initial-language-052-068",
+        "benchmark-initial-language-069-084",
+        "benchmark-initial-language-085-100",
+        "benchmark-initial-technical-001-020",
+        "benchmark-initial-technical-021-040",
+        "benchmark-initial-technical-041-060",
+        "benchmark-initial-technical-061-080",
+        "benchmark-initial-technical-081-100",
+        "benchmark-revision-round-1",
+        "benchmark-translate-001-017",
+        "benchmark-translate-018-034",
+        "benchmark-translate-035-051",
+        "benchmark-translate-052-068",
+        "benchmark-translate-069-084",
+        "benchmark-translate-085-100"
+      ]
+    }
+  ],
+  "schema_version": 1
+}

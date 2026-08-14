@@ -56,5 +56,15 @@
         "source": {"type": "string", "minLength": 1}
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"result": {"const": "accept"}},
+        "required": ["result"]
+      },
+      "then": {"properties": {"issues": {"maxItems": 0}}},
+      "else": {"properties": {"issues": {"minItems": 1}}}
+    }
+  ]
 }

@@ -24,6 +24,18 @@
         "formal-smoke-technical",
         "formal-smoke-translation"
       ]
+    },
+    {
+      "batch": "overview-of-gmsh-v1",
+      "file": "overview-of-gmsh-v1.jsonl",
+      "run_ids": [
+        "overview_rereview_language_v1",
+        "overview_rereview_technical_v1",
+        "overview_review_language_v1",
+        "overview_review_technical_v1",
+        "overview_revise_v1",
+        "overview_translate_v1"
+      ]
     }
   ],
   "schema_version": 1

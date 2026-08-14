@@ -2,7 +2,7 @@
 
 这是 [Gmsh 4.15.2 参考手册](https://gmsh.info/doc/texinfo/gmsh.html)的非官方简体中文翻译项目。项目从经过 SHA-256 校验的官方发布包抽取 Texinfo 内容，把 `po/zh_CN.po` 作为可发布译文的唯一编辑来源。当前已经实现可复现的英文静态构建；中文网站构建和完整翻译属于后续任务。
 
-当前仓库完成的是翻译基础设施和模型准入样本，还没有发布完整中文手册。现有 100 单元报告只证明抽样有效，状态为 `selection_qualified_pending_review`；不得把它解释为模型已经通过 100 单元质量评测。
+当前仓库完成了翻译基础设施和 100 单元模型质量基线，还没有发布完整中文手册。基准参考译文已经经过相互隔离的中文审校、技术审校和确定性检查，最终问题数均为零，维护者已批准当前模型、推理配置和提示词用于后续小批量翻译。基准译文只用于测试，不会进入网站正文。结构化审校记录是从各次 Codex 任务导入的只读证据；基线命令只校验记录及其哈希，不会重新生成审校结论。正文翻译已经从 `Overview of Gmsh` 节点开始，该节点的 6 个单元目前均为正式译文。
 
 ## 已完成的基础能力
 
@@ -13,8 +13,8 @@
 - 把 `CHANGELOG.txt` 和 `CREDITS.txt` 中允许翻译的自然语言纳入同一 PO，排除姓名、许可证和排版结构；
 - 实际试跑 po4a 0.74 后，因其改写交叉引用和受保护的 Texinfo 命令而不予采用；项目自带的兼容性试译覆盖 Overview、t1–t3 和 10 个 API 条目，无译文往返保持源文件字节与结构不变；
 - 建立并经两个独立 AI 会话审查通过的 150 条术语表；
-- 建立 100 单元分层基准集，以及已跑通翻译、两类独立审校、一次修订和确定性检查的 5 单元小样；
-- 证明一个 PO 单元能够由审校记录确定性归并到 `formal` 状态。
+- 建立 100 单元分层基准集，完成初译、两类独立审校、最多两轮定向修订和逐单元受保护内容检查，并将初译、最终参考译文和逐条审校证据的哈希冻结在仓库中；
+- 完成 `Overview of Gmsh` 节点的 6 个单元，并由 PO、独立审校记录和自动检查确定性归并到 `formal` 状态；标题单元复用此前已通过的 `formal-smoke-v1` 记录，其余 5 个单元记录在本节点批次中。
 
 ## 本地验证
 
@@ -45,7 +45,7 @@ docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check reproducible-englis
 - `docs/design/translation-plan.md`：已确认的完整设计；
 - `po/gmsh.pot`、`po/zh_CN.po`：翻译单元和中文译文；
 - `glossary/terms.csv`：已审查术语表；
-- `benchmarks/qualification-v1.json`：100 单元抽样资格报告；
+- `benchmarks/qualification-v1.json`：100 单元模型质量基线的资格报告；
 - `tests/fixtures/pilot/pilot-report.json`：兼容性往返证据；
 - `NOTICE.md`、`docs/license-matrix.md`：来源和许可说明。
 

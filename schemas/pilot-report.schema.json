@@ -25,7 +25,7 @@
     "round_trip",
     "round_trip_byte_identity",
     "round_trip_comparisons",
-    "qualification_state"
+    "benchmark_qualification_state"
   ],
   "properties": {
     "schema_version": {"const": 1},
@@ -71,6 +71,6 @@
         }
       }
     },
-    "qualification_state": {"const": "selection_qualified_pending_review"}
+    "benchmark_qualification_state": {"const": "qualified"}
   }
 }

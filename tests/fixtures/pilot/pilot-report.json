@@ -1,4 +1,5 @@
 {
+  "benchmark_qualification_state": "qualified",
   "benchmark_unit_count": 100,
   "external_file_count": 31,
   "extractor": "gmsh-doc-cn-custom-texinfo-v1",
@@ -9,7 +10,6 @@
   "po4a_evaluation": "tests/fixtures/pilot/po4a-evaluation.json",
   "po4a_reason": "po4a 0.74 changed protected Texinfo tokens and structure records; the dedicated parser is the admitted path",
   "protected_token_count": 237,
-  "qualification_state": "selection_qualified_pending_review",
   "round_trip": "pass",
   "round_trip_byte_identity": true,
   "round_trip_comparisons": [

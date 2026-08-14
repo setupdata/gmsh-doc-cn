@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -146,6 +147,10 @@ def validate_review_record(record: Mapping[str, object]) -> None:
         raise ValueError("review round must be an integer from 0 through 2")
     if not isinstance(record["issues"], list):
         raise ValueError("review issues must be a list")
+    if record["result"] == "accept" and record["issues"]:
+        raise ValueError("accepted review records must not contain issues")
+    if record["result"] in {"revise", "unresolved"} and not record["issues"]:
+        raise ValueError("non-accepted review records must explain their issues")
     if not isinstance(record.get("retry_count"), int) or int(record["retry_count"]) < 0:
         raise ValueError("review retry_count must be a non-negative integer")
     if not isinstance(record.get("cost"), dict):
@@ -256,3 +261,22 @@ def read_review_batches(directory: Path, manifest_path: Path) -> list[dict[str, 
     if missing_files:
         raise ValueError(f"declared review JSONL file is missing: {sorted(missing_files)[0]}")
     return records
+
+
+def review_evidence_sha256(directory: Path, manifest_path: Path) -> str:
+    """Hash every review file declared by a validated batch manifest."""
+
+    directory = Path(directory).resolve()
+    manifest_path = Path(manifest_path).resolve()
+    # Validate the manifest, records and declared run IDs before treating the
+    # byte stream as evidence.
+    read_review_batches(directory, manifest_path)
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    digest = hashlib.sha256()
+    for entry in sorted(manifest["batches"], key=lambda item: item["file"].encode("utf-8")):
+        filename = str(entry["file"])
+        digest.update(filename.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update((directory / filename).read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()

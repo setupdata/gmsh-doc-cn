@@ -180,6 +180,8 @@ def validate_smoke_candidates(
     benchmark: Iterable[Mapping[str, object]],
     candidates: Iterable[Mapping[str, object]],
     units_by_id: Mapping[str, TranslationUnit],
+    *,
+    require_protected_content: bool = True,
 ) -> dict[str, object]:
     """Validate exact sample identity and every protected token in candidate translations."""
 
@@ -203,15 +205,16 @@ def validate_smoke_candidates(
         translation = str(candidate.get("reference_translation", ""))
         if not translation:
             raise ValueError(f"smoke candidate translation is empty: {benchmark_id}")
-        if protected_values(
+        protected_content_valid = protected_values(
             translation, protect_names=unit.relative_file == "CREDITS.txt"
-        ) != unit.protected_values:
+        ) == unit.protected_values
+        if require_protected_content and not protected_content_valid:
             raise ValueError(f"smoke candidate changed protected content: {benchmark_id}")
         checks.append(
             {
                 "benchmark_id": benchmark_id,
                 "unit_id": unit_id,
-                "protected_content": "pass",
+                "protected_content": "pass" if protected_content_valid else "fail",
                 "candidate_sha256": hashlib.sha256(
                     _normalise(translation).encode("utf-8")
                 ).hexdigest(),
@@ -220,7 +223,7 @@ def validate_smoke_candidates(
     return {
         "schema_version": 1,
         "checked_count": len(checks),
-        "all_passed": True,
+        "all_passed": all(item["protected_content"] == "pass" for item in checks),
         "checks": checks,
     }
 

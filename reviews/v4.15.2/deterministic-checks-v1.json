@@ -1,17 +1,92 @@
 {
   "algorithm": "deterministic-unit-checks-v1",
   "all_passed": true,
-  "checked_count": 1,
-  "po_sha256": "2c64ac4d152dc8540dfe786bc61c049b84072b88c02747d6b702e0361610ab97",
+  "checked_count": 6,
+  "po_sha256": "32d1e17a607cd27d197c2fca6a63f4373dcd0fad598c7e05e3a6794dcf3b9a55",
   "schema_version": 1,
   "structure": {
     "changed_kinds": [],
     "differences": [],
     "passed": true,
-    "source_sha256": "a3bc3e43a55f73bda51fba9a1d8e8c1fd05944ef1166487ddd1df78595b4d9e3",
-    "translated_sha256": "a3bc3e43a55f73bda51fba9a1d8e8c1fd05944ef1166487ddd1df78595b4d9e3"
+    "source_sha256": "f3adf7fa88ab3d4eef8077cc113ac23b810d69206e2e9d53b0a18bab2ee90e9d",
+    "translated_sha256": "f3adf7fa88ab3d4eef8077cc113ac23b810d69206e2e9d53b0a18bab2ee90e9d"
   },
   "units": [
+    {
+      "candidate_hash": "3367e20caad30e3c1f5429922f75065de94108f968963f9402de5a73a5fddd38",
+      "checks": {
+        "not_fuzzy": true,
+        "po_msgid_current": true,
+        "protected_content": true,
+        "translation_present": true
+      },
+      "context_hash": "e1683c2122e4d177e0538fe0b8671cc82f6aca35de05fa211ad0939b191da023",
+      "msgctxt": "doc/texinfo/gmsh.texi|Overview of Gmsh|paragraph|e161e2cdc2ccad6d5f34ae83b12e783c3d21303fdd6d4fcc588000ead976b24f",
+      "protected_hash": "9531c6d847d080efb867c40e3227e9803027abef0723cbd5830ad146134d8d19",
+      "result": "pass",
+      "source_hash": "bf4680c2cdb7114f4188910e12f75afb8d064b2adabc4f257187e3688c8e1bd1",
+      "unit_id": "2f7160b7d621cf34053e7803634b947f503542b1b3766424edbb756455e83923"
+    },
+    {
+      "candidate_hash": "fea405f9b01d14166e102eba54ea0b210b2363ff0303a683b70bd98a3ef07d14",
+      "checks": {
+        "not_fuzzy": true,
+        "po_msgid_current": true,
+        "protected_content": true,
+        "translation_present": true
+      },
+      "context_hash": "023e28e67c97cac72b9875b90b464afb609af6d34e5c04ab0a203b9fd9bad7be",
+      "msgctxt": "doc/texinfo/gmsh.texi|Overview of Gmsh|index|Overview",
+      "protected_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "result": "pass",
+      "source_hash": "e3d6f3eeb4d971ee593f9352c1408c27806b887881990577d8c5e2f49713debe",
+      "unit_id": "66a1ab1e87e085a88723e38e6974b4f21031fe289f4a8d29ad28558252bd18c4"
+    },
+    {
+      "candidate_hash": "8131eafd02396e6a2482d37b443ac68fb23c198062ed4d7e46c3ec5b5a61928c",
+      "checks": {
+        "not_fuzzy": true,
+        "po_msgid_current": true,
+        "protected_content": true,
+        "translation_present": true
+      },
+      "context_hash": "c2f9e846862f37b748a153b93c7a57265192c81576ee492690f4dacf09a718ea",
+      "msgctxt": "doc/texinfo/gmsh.texi|Overview of Gmsh|index|Introduction",
+      "protected_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "result": "pass",
+      "source_hash": "e369418c6881f30c028a23b96aef72f1e8b62f21ab8998c5f39103ab14437bfa",
+      "unit_id": "78fc6b746ad6b5909c817f41037c0b297e56b9c1f734834b5243ed8ddf62c833"
+    },
+    {
+      "candidate_hash": "b2ecfefc969040bd14ec4f642b4df9ab9823c4151f01145c95b2ef485c632a3c",
+      "checks": {
+        "not_fuzzy": true,
+        "po_msgid_current": true,
+        "protected_content": true,
+        "translation_present": true
+      },
+      "context_hash": "8594b59d9f75cf41a0eab887e89589b604f4563ee1aa9a9b6309f53d3485af88",
+      "msgctxt": "doc/texinfo/gmsh.texi|Overview of Gmsh|paragraph|8d90d3bd844a82d009b5a9ee2ba6300104fc662ceefb640087962c4660d62c7e",
+      "protected_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "result": "pass",
+      "source_hash": "efd2a73d5d5d06b1ea297e7bc56e3d892880e03b8f63a3001dfac7553fd8d7cd",
+      "unit_id": "934aecb49b901810f1437cfd527924577279b5892614e06d90a0cafa79cb36b5"
+    },
+    {
+      "candidate_hash": "b008d6cf7d0e6f44e29fabb42b7737448a5ddb377317a452652087cfa75c75c5",
+      "checks": {
+        "not_fuzzy": true,
+        "po_msgid_current": true,
+        "protected_content": true,
+        "translation_present": true
+      },
+      "context_hash": "831760e36f3745b3c63342f1aa0964df096ae4db6fb7ac09940175472e3cf1b3",
+      "msgctxt": "doc/texinfo/gmsh.texi|Overview of Gmsh|paragraph|2719370f925cbac4357d5dd22baa3fa734dd6d7a35051844bb95a3a632ff5671",
+      "protected_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "result": "pass",
+      "source_hash": "93a8460ee1645bbadb9b07f9e103be76af2d0fb14aeca80ab67454d23d061694",
+      "unit_id": "aad666639ab4f3aa412d1e1eae256e0cac09f6132bed4f6b6577bba1578bdf35"
+    },
     {
       "candidate_hash": "47bfe6a8abac59303e619278c59f7a0f0ed383ede9844fd32a9cc99f0bc8f591",
       "checks": {

@@ -9,6 +9,10 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 
+_TRANSLATABLE_INDEX_KINDS = {"cindex", "findex", "vindex", "kindex", "pindex", "tindex"}
+_INDEX_VALUE_PLACEHOLDER = "<translatable-index-term>"
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -77,6 +81,10 @@ def scan_structure(source_root: Path) -> StructureSnapshot:
             value = value.strip()
             if kind == "node":
                 node = value.split(",", 1)[0].strip()
+            elif kind in _TRANSLATABLE_INDEX_KINDS:
+                # The command, file, node and position are structural. Its text is a
+                # translation unit and is checked through PO identity and candidate hashes.
+                value = _INDEX_VALUE_PLACEHOLDER
             records.append(StructureRecord(kind, relative, node, value))
             if kind == "verbatiminclude":
                 external_paths.add((path.parent / value).resolve())

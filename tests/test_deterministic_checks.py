@@ -93,6 +93,31 @@ class DeterministicCheckTests(unittest.TestCase):
             self.assertFalse(report["units"][0]["checks"]["protected_content"])
             self.assertEqual(report["units"][0]["result"], "fail")
 
+    def test_translated_index_terms_do_not_count_as_structure_changes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source"
+            texinfo = source / "doc" / "texinfo"
+            texinfo.mkdir(parents=True)
+            (texinfo / "gmsh.texi").write_text(
+                "@node Top\n@chapter Manual\n@cindex Introduction\n",
+                encoding="utf-8",
+            )
+            units = extract_tree(source).units
+            index_unit = next(unit for unit in units if unit.role == "index")
+            po = root / "zh_CN.po"
+            write_po(
+                units,
+                po,
+                language="zh_CN",
+                translations={index_unit.msgctxt: "简介"},
+            )
+
+            report = run_deterministic_checks(source, po, [index_unit.unit_id])
+
+            self.assertTrue(report["all_passed"])
+            self.assertTrue(report["structure"]["passed"])
+
 
 if __name__ == "__main__":
     unittest.main()

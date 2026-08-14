@@ -56,6 +56,8 @@ jobs:
           done
           diff -u benchmarks/five-unit-smoke.jsonl build/generated/benchmarks/five-unit-smoke.jsonl
           diff -u benchmarks/five-unit-validation.json build/generated/benchmarks/five-unit-validation.json
+          diff -u benchmarks/reference-initial-validation-v1.json build/generated/benchmarks/reference-initial-validation-v1.json
+          diff -u benchmarks/reference-validation-v1.json build/generated/benchmarks/reference-validation-v1.json
           diff -u benchmarks/qualification-v1.json build/generated/benchmarks/qualification-v1.json
           diff -u tests/fixtures/pilot/protected.jsonl build/generated/tests/fixtures/pilot/protected.jsonl
           diff -u tests/fixtures/pilot/structure.jsonl build/generated/tests/fixtures/pilot/structure.jsonl
@@ -67,7 +69,7 @@ jobs:
           reproducible-english
           --source upstream/cache/source/gmsh-4.15.2-source
           --output reports/english-artifacts.json
-      - name: Prove the committed smoke unit reaches formal state
+      - name: Prove the first translated node reaches formal state
         run: >-
           docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check status
           --source upstream/cache/source/gmsh-4.15.2-source
@@ -75,12 +77,17 @@ jobs:
           --reviews reviews/v4.15.2
           --review-manifest reviews/v4.15.2/batches.json
           --check-unit bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714
+          --check-unit 78fc6b746ad6b5909c817f41037c0b297e56b9c1f734834b5243ed8ddf62c833
+          --check-unit 66a1ab1e87e085a88723e38e6974b4f21031fe289f4a8d29ad28558252bd18c4
+          --check-unit 934aecb49b901810f1437cfd527924577279b5892614e06d90a0cafa79cb36b5
+          --check-unit 2f7160b7d621cf34053e7803634b947f503542b1b3766424edbb756455e83923
+          --check-unit aad666639ab4f3aa412d1e1eae256e0cac09f6132bed4f6b6577bba1578bdf35
           --checks-output reports/deterministic-checks.json
           --output reports/status.json
       - name: Verify the smoke status result
         run: |
           diff -u reviews/v4.15.2/deterministic-checks-v1.json reports/deterministic-checks.json
-          python -c "import json; r=json.load(open('reports/status.json', encoding='utf-8')); assert r['counts'] == {'formal': 1, 'untranslated': 6915}; assert r['obsolete_count'] == 20"
+          python -c "import json; r=json.load(open('reports/status.json', encoding='utf-8')); assert r['counts'] == {'formal': 6, 'untranslated': 6910}; assert r['obsolete_count'] == 20"
       - name: Preserve deterministic reports
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -91,4 +98,6 @@ jobs:
             reports/deterministic-checks.json
             build/generated/tests/fixtures/pilot/pilot-report.json
             build/generated/benchmarks/qualification-v1.json
+            build/generated/benchmarks/reference-initial-validation-v1.json
+            build/generated/benchmarks/reference-validation-v1.json
           if-no-files-found: error
