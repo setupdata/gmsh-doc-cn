@@ -9,6 +9,7 @@ import os
 import shlex
 import tempfile
 import tomllib
+from collections.abc import Mapping
 from pathlib import Path
 
 from .artifacts import write_artifact_manifest
@@ -21,7 +22,14 @@ from .deterministic_checks import (
     write_deterministic_checks,
 )
 from .html_inventory import collect_html_inventory, write_html_inventory
-from .review import read_review_batches
+from .preview import (
+    build_preview_site,
+    preview_build_report,
+    sha256_file,
+    write_preview_report,
+)
+from .review import read_review_batches, review_evidence_sha256
+from .schema_validation import validate_schema
 from .semantic_rules import semantic_rule_hashes
 from .status import reduce_status, write_status
 from .upstream import extract_upstream, fetch_upstream
@@ -30,6 +38,117 @@ from .upstream import extract_upstream, fetch_upstream
 def _manifest(path: Path) -> dict[str, object]:
     with path.open("rb") as stream:
         return tomllib.load(stream)["upstream"]
+
+
+def _toml_table(path: Path, table: str) -> dict[str, object]:
+    with Path(path).open("rb") as stream:
+        document = tomllib.load(stream)
+    value = document.get(table)
+    if not isinstance(value, dict):
+        raise ValueError(f"missing [{table}] table in {path}")
+    return value
+
+
+def _json_object(path: Path) -> dict[str, object]:
+    value = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ValueError(f"expected JSON object in {path}")
+    return value
+
+
+def _preview_settings(args: argparse.Namespace) -> dict[str, object]:
+    manifest_path = Path(args.manifest)
+    site_path = Path(args.site_config)
+    release_path = Path(args.release)
+    po_path = Path(args.po)
+    status_path = Path(args.status)
+    status_schema_path = Path(args.status_schema)
+    preview_schema_path = Path(args.schema)
+    rules_path = Path(args.rules)
+    glossary_path = Path(args.glossary)
+    review_directory = Path(args.reviews)
+    review_manifest_path = Path(args.review_manifest)
+    check_units = sorted(set(args.check_unit), key=lambda value: value.encode("utf-8"))
+    if not check_units:
+        raise ValueError("preview build requires at least one --check-unit")
+    manifest = _manifest(manifest_path)
+    site = _toml_table(site_path, "site")
+    release = _toml_table(release_path, "release")
+    version = str(manifest["version"])
+    if site.get("version") != version or release.get("upstream_version") != version:
+        raise ValueError("site, release and upstream versions must match")
+    if release.get("site_base") != site.get("base"):
+        raise ValueError("site and release SITE_BASE values must match")
+    if release.get("language") != site.get("html_language_zh"):
+        raise ValueError("release and site Chinese language tags must match")
+    paths = {
+        "upstream_manifest": manifest_path,
+        "site_config": site_path,
+        "release": release_path,
+        "po": po_path,
+        "status": status_path,
+        "status_schema": status_schema_path,
+        "preview_schema": preview_schema_path,
+        "translation_rules": rules_path,
+        "glossary": glossary_path,
+        "review_manifest": review_manifest_path,
+        "tool_versions": Path(args.tool_versions),
+        "containerfile": Path(args.containerfile),
+    }
+    status = _json_object(status_path)
+    validate_schema(status, _json_object(status_schema_path))
+    input_hashes = {name: sha256_file(path) for name, path in paths.items()}
+    input_hashes["reviews"] = review_evidence_sha256(
+        review_directory, review_manifest_path
+    )
+    input_hashes["check_units"] = hashlib.sha256(
+        json.dumps(check_units, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    return {
+        "manifest": manifest,
+        "site": site,
+        "release": release,
+        "po_path": po_path,
+        "status": status,
+        "review_directory": review_directory,
+        "review_manifest_path": review_manifest_path,
+        "check_units": check_units,
+        "rules_path": rules_path,
+        "glossary_path": glossary_path,
+        "input_hashes": input_hashes,
+    }
+
+
+def _run_preview_build(
+    args: argparse.Namespace, dist_root: Path, settings: Mapping[str, object]
+):
+    manifest = settings["manifest"]
+    site = settings["site"]
+    release = settings["release"]
+    if not isinstance(manifest, Mapping) or not isinstance(site, Mapping):
+        raise ValueError("invalid preview configuration")
+    if not isinstance(release, Mapping) or not isinstance(settings["status"], Mapping):
+        raise ValueError("invalid preview release or status input")
+    makeinfo = shlex.split(args.makeinfo, posix=os.name != "nt")
+    return build_preview_site(
+        Path(args.source),
+        dist_root,
+        po_path=Path(settings["po_path"]),
+        status=settings["status"],
+        review_directory=Path(settings["review_directory"]),
+        review_manifest_path=Path(settings["review_manifest_path"]),
+        check_units=settings["check_units"],
+        rules_path=Path(settings["rules_path"]),
+        glossary_path=Path(settings["glossary_path"]),
+        version=str(manifest["version"]),
+        source_date_epoch=int(manifest["source_date_epoch"]),
+        site_base=str(site["base"]),
+        upstream_tag=str(manifest["tag"]),
+        upstream_commit=str(manifest["commit"]),
+        translation_revision=str(release["translation_revision"]),
+        translation_date=str(release["translation_date"]),
+        makeinfo_command=makeinfo,
+    )
 
 
 def command_fetch(args: argparse.Namespace) -> None:
@@ -109,6 +228,24 @@ def command_build_english(args: argparse.Namespace) -> None:
                 "public_root": str(result.public_root),
                 "warning_fingerprints": result.warning_fingerprints,
             }
+        )
+    )
+
+
+def command_build_preview(args: argparse.Namespace) -> None:
+    settings = _preview_settings(args)
+    result = _run_preview_build(args, Path(args.dist), settings)
+    print(
+        json.dumps(
+            {
+                "english_root": str(result.english_root),
+                "preview_root": str(result.preview_root),
+                "formal_unit_count": result.formal_unit_count,
+                "fallback_unit_count": result.fallback_unit_count,
+                "preview_html_file_count": result.preview_html_file_count,
+            },
+            ensure_ascii=False,
+            sort_keys=True,
         )
     )
 
@@ -238,6 +375,60 @@ def command_reproducible(args: argparse.Namespace) -> None:
         )
 
 
+def command_reproducible_preview(args: argparse.Namespace) -> None:
+    settings = _preview_settings(args)
+    dist_root = Path(args.dist)
+    with tempfile.TemporaryDirectory() as second, tempfile.TemporaryDirectory() as reports:
+        first_result = _run_preview_build(args, dist_root, settings)
+        second_result = _run_preview_build(args, Path(second) / "dist", settings)
+        first_manifest = write_artifact_manifest(
+            first_result.dist_root, Path(reports) / "first-artifacts.json"
+        )
+        second_manifest = write_artifact_manifest(
+            second_result.dist_root, Path(reports) / "second-artifacts.json"
+        )
+        manifest = settings["manifest"]
+        site = settings["site"]
+        release = settings["release"]
+        input_hashes = settings["input_hashes"]
+        if not all(isinstance(value, Mapping) for value in (manifest, site, release)):
+            raise ValueError("invalid preview configuration")
+        if not isinstance(input_hashes, Mapping):
+            raise ValueError("invalid preview input hashes")
+        report_arguments = {
+            "site_base": str(site["base"]),
+            "version": str(manifest["version"]),
+            "upstream_tag": str(manifest["tag"]),
+            "upstream_commit": str(manifest["commit"]),
+            "translation_revision": str(release["translation_revision"]),
+            "translation_date": str(release["translation_date"]),
+            "source_date_epoch": int(manifest["source_date_epoch"]),
+            "input_hashes": {str(key): str(value) for key, value in input_hashes.items()},
+        }
+        first_report = preview_build_report(
+            first_result, artifact_manifest=first_manifest, **report_arguments
+        )
+        second_report = preview_build_report(
+            second_result, artifact_manifest=second_manifest, **report_arguments
+        )
+        if first_report != second_report:
+            raise SystemExit("two clean bilingual preview builds produced different reports")
+        schema = _json_object(Path(args.schema))
+        validate_schema(first_report, schema)
+        write_preview_report(first_report, Path(args.output))
+        print(
+            json.dumps(
+                {
+                    "reproducible": True,
+                    "formal_unit_count": first_result.formal_unit_count,
+                    "fallback_unit_count": first_result.fallback_unit_count,
+                    "preview_html_file_count": first_result.preview_html_file_count,
+                },
+                sort_keys=True,
+            )
+        )
+
+
 def parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(prog="gmsh-doc-cn")
     commands = root.add_subparsers(dest="command", required=True)
@@ -297,6 +488,26 @@ def parser() -> argparse.ArgumentParser:
     build.add_argument("--makeinfo", default="makeinfo")
     build.set_defaults(function=command_build_english)
 
+    preview = commands.add_parser("build-preview")
+    preview.add_argument("--source", required=True)
+    preview.add_argument("--dist", default="dist")
+    preview.add_argument("--manifest", default="upstream/manifest.toml")
+    preview.add_argument("--site-config", default="config/site.toml")
+    preview.add_argument("--release", default="releases/v4.15.2-r1.toml")
+    preview.add_argument("--po", default="po/zh_CN.po")
+    preview.add_argument("--status", default="reports/status.json")
+    preview.add_argument("--status-schema", default="schemas/status.schema.json")
+    preview.add_argument("--reviews", default="reviews/v4.15.2")
+    preview.add_argument("--review-manifest", default="reviews/v4.15.2/batches.json")
+    preview.add_argument("--check-unit", action="append", required=True)
+    preview.add_argument("--rules", default="config/translation-rules.toml")
+    preview.add_argument("--glossary", default="glossary/terms.csv")
+    preview.add_argument("--tool-versions", default="container/tool-versions.lock")
+    preview.add_argument("--containerfile", default="container/Containerfile")
+    preview.add_argument("--schema", default="schemas/preview-build.schema.json")
+    preview.add_argument("--makeinfo", default="makeinfo")
+    preview.set_defaults(function=command_build_preview)
+
     artifacts = commands.add_parser("artifacts")
     artifacts.add_argument("--root", required=True)
     artifacts.add_argument("--output", required=True)
@@ -338,6 +549,29 @@ def parser() -> argparse.ArgumentParser:
     )
     reproducible.add_argument("--output", default="reports/english-artifacts.json")
     reproducible.set_defaults(function=command_reproducible)
+
+    reproducible_preview = commands.add_parser("reproducible-preview")
+    reproducible_preview.add_argument("--source", required=True)
+    reproducible_preview.add_argument("--dist", default="build/preview-site")
+    reproducible_preview.add_argument("--manifest", default="upstream/manifest.toml")
+    reproducible_preview.add_argument("--site-config", default="config/site.toml")
+    reproducible_preview.add_argument("--release", default="releases/v4.15.2-r1.toml")
+    reproducible_preview.add_argument("--po", default="po/zh_CN.po")
+    reproducible_preview.add_argument("--status", default="reports/status.json")
+    reproducible_preview.add_argument("--status-schema", default="schemas/status.schema.json")
+    reproducible_preview.add_argument("--reviews", default="reviews/v4.15.2")
+    reproducible_preview.add_argument(
+        "--review-manifest", default="reviews/v4.15.2/batches.json"
+    )
+    reproducible_preview.add_argument("--check-unit", action="append", required=True)
+    reproducible_preview.add_argument("--rules", default="config/translation-rules.toml")
+    reproducible_preview.add_argument("--glossary", default="glossary/terms.csv")
+    reproducible_preview.add_argument("--tool-versions", default="container/tool-versions.lock")
+    reproducible_preview.add_argument("--containerfile", default="container/Containerfile")
+    reproducible_preview.add_argument("--makeinfo", default="makeinfo")
+    reproducible_preview.add_argument("--schema", default="schemas/preview-build.schema.json")
+    reproducible_preview.add_argument("--output", default="reports/preview-artifacts.json")
+    reproducible_preview.set_defaults(function=command_reproducible_preview)
     return root
 
 

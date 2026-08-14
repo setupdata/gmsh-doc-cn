@@ -88,6 +88,34 @@ jobs:
         run: |
           diff -u reviews/v4.15.2/deterministic-checks-v1.json reports/deterministic-checks.json
           python -c "import json; r=json.load(open('reports/status.json', encoding='utf-8')); assert r['counts'] == {'formal': 6, 'untranslated': 6910}; assert r['obsolete_count'] == 20"
+      - name: Build the reproducible bilingual preview
+        run: >-
+          docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check
+          reproducible-preview
+          --source upstream/cache/source/gmsh-4.15.2-source
+          --dist build/preview-site
+          --status reports/status.json
+          --check-unit bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714
+          --check-unit 78fc6b746ad6b5909c817f41037c0b297e56b9c1f734834b5243ed8ddf62c833
+          --check-unit 66a1ab1e87e085a88723e38e6974b4f21031fe289f4a8d29ad28558252bd18c4
+          --check-unit 934aecb49b901810f1437cfd527924577279b5892614e06d90a0cafa79cb36b5
+          --check-unit 2f7160b7d621cf34053e7803634b947f503542b1b3766424edbb756455e83923
+          --check-unit aad666639ab4f3aa412d1e1eae256e0cac09f6132bed4f6b6577bba1578bdf35
+          --output reports/preview-artifacts.json
+      - name: Verify preview boundaries
+        run: >-
+          python -c "import json; r=json.load(open('reports/preview-artifacts.json', encoding='utf-8'));
+          assert r['reproducible'] is True;
+          assert (r['formal_unit_count'], r['fallback_unit_count']) == (6, 6910);
+          assert r['english_root'] == 'v4.15.2/en';
+          assert r['preview_root'] == 'preview/v4.15.2/zh-cn';
+          assert r['preview_html_file_count'] == r['noindex_nofollow_page_count'] == r['visible_preview_marker_page_count'] == r['english_fallback_marker_page_count'];
+          assert r['english_duplicate_anchor_count'] == r['preview_duplicate_anchor_count'] == 0;
+          assert r['missing_english_anchor_count'] == 0;
+          assert r['preview_added_broken_internal_link_count'] == 0;
+          assert r['site_absolute_link_count'] > 0 and r['broken_site_absolute_link_count'] == 0;
+          assert r['resource_link_count'] > 0 and r['broken_resource_link_count'] == 0;
+          assert r['warning_fingerprints']['preview_additions'] == []"
       - name: Preserve deterministic reports
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -96,8 +124,15 @@ jobs:
             reports/english-artifacts.json
             reports/status.json
             reports/deterministic-checks.json
+            reports/preview-artifacts.json
             build/generated/tests/fixtures/pilot/pilot-report.json
             build/generated/benchmarks/qualification-v1.json
             build/generated/benchmarks/reference-initial-validation-v1.json
             build/generated/benchmarks/reference-validation-v1.json
+          if-no-files-found: error
+      - name: Preserve the bilingual preview site
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bilingual-preview-site
+          path: build/preview-site
           if-no-files-found: error

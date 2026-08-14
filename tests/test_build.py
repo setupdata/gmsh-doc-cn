@@ -35,10 +35,16 @@ class BuildEnglishSiteTests(unittest.TestCase):
                     )
                     if '--no-split' in args:
                         output.parent.mkdir(parents=True, exist_ok=True)
-                        output.write_text(f'<html data-epoch="{stamp}">single</html>\\n', encoding='utf-8')
+                        output.write_text(
+                            f'<html data-epoch="{stamp}"><head></head><body>single</body></html>\\n',
+                            encoding='utf-8',
+                        )
                     else:
                         output.mkdir(parents=True, exist_ok=True)
-                        (output / 'index.html').write_text(f'<html data-epoch="{stamp}">split</html>\\n', encoding='utf-8')
+                        (output / 'index.html').write_text(
+                            f'<html data-epoch="{stamp}"><head></head><body>split</body></html>\\n',
+                            encoding='utf-8',
+                        )
                     """
                 ).lstrip(),
                 encoding="utf-8",
@@ -58,6 +64,7 @@ class BuildEnglishSiteTests(unittest.TestCase):
             self.assertTrue((public_root / "gmsh.html").is_file())
             self.assertEqual((public_root / "images" / "t1.png").read_bytes(), b"png")
             self.assertIn("1774339200", (public_root / "gmsh.html").read_text())
+            self.assertIn('lang="en"', (public_root / "gmsh.html").read_text())
             self.assertEqual(
                 result.warning_fingerprints,
                 (
