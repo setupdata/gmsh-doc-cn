@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "algorithm", "input_hashes", "obsolete_count", "unit_count", "counts", "units"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "algorithm": {"const": "translation-status-reducer-v1"},
+    "input_hashes": {
+      "type": "object",
+      "required": ["translation_rules", "glossary"],
+      "properties": {
+        "translation_rules": {"type": ["string", "null"]},
+        "glossary": {"type": ["string", "null"]}
+      }
+    },
+    "unit_count": {"type": "integer", "minimum": 0},
+    "obsolete_count": {"type": "integer", "minimum": 0},
+    "counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["unit_id", "msgctxt", "source_hash", "candidate_hash", "semantic_rules_hash", "state"],
+        "properties": {
+          "unit_id": {"type": "string"},
+          "msgctxt": {"type": "string"},
+          "source_hash": {"type": "string"},
+          "candidate_hash": {"type": ["string", "null"]},
+          "semantic_rules_hash": {"type": ["string", "null"]},
+          "state": {"enum": ["untranslated", "draft", "language-reviewed", "technical-reviewed", "formal", "unresolved", "stale"]}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "report_kind", "algorithm_version", "seed", "upstream_version",
+    "pot_sha256", "manifest_sha256", "quota_plan", "selected_count", "selected_counts",
+    "selection_checks", "qualification_state", "ai_generation", "language_review",
+    "technical_review", "quality_counts", "initial_reference_sha256", "reference_sha256",
+    "review_manifest_sha256", "review_evidence_sha256",
+    "review_record_count", "revision_count", "max_revision_round", "evaluation_checks",
+    "human_approval", "approval_id", "publish_eligible"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "report_kind": {"const": "benchmark_qualification"},
+    "algorithm_version": {"const": "sha256-stratified-v1"},
+    "seed": {"type": "string", "minLength": 1},
+    "upstream_version": {"const": "4.15.2"},
+    "pot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "quota_plan": {"type": "object"},
+    "selected_count": {"const": 100},
+    "selected_counts": {"type": "object"},
+    "selection_checks": {"type": "object"},
+    "qualification_state": {"const": "qualified"},
+    "ai_generation": {
+      "type": "object",
+      "required": ["status", "ai_calls", "run_ids", "model", "reasoning_effort", "prompt_hash"],
+      "properties": {
+        "status": {"const": "complete"},
+        "ai_calls": {"type": "integer", "minimum": 1},
+        "run_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "model": {"type": "string", "minLength": 1},
+        "reasoning_effort": {"type": "string", "minLength": 1},
+        "prompt_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "language_review": {"const": "accept"},
+    "technical_review": {"const": "accept"},
+    "quality_counts": {
+      "type": "object",
+      "required": ["critical", "major", "minor", "unresolved"],
+      "properties": {
+        "critical": {"const": 0},
+        "major": {"const": 0},
+        "minor": {"const": 0},
+        "unresolved": {"const": 0}
+      }
+    },
+    "initial_reference_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reference_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "review_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "review_evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "review_record_count": {"type": "integer", "minimum": 300},
+    "revision_count": {"type": "integer", "minimum": 0},
+    "max_revision_round": {"type": "integer", "minimum": 0, "maximum": 1},
+    "evaluation_checks": {
+      "type": "object",
+      "required": [
+        "initial_reference_checked", "initial_protected_failure_count",
+        "initial_protected_failures_captured", "all_references_accepted",
+        "language_review_independent", "protected_content_valid",
+        "review_records_current", "review_records_unique"
+      ],
+      "properties": {
+        "initial_reference_checked": {"const": true},
+        "initial_protected_failure_count": {"type": "integer", "minimum": 0},
+        "initial_protected_failures_captured": {"const": true},
+        "all_references_accepted": {"const": true},
+        "language_review_independent": {"const": true},
+        "protected_content_valid": {"const": true},
+        "review_records_current": {"const": true},
+        "review_records_unique": {"const": true}
+      }
+    },
+    "human_approval": {"const": "approved"},
+    "approval_id": {"type": "string", "minLength": 1},
+    "publish_eligible": {"const": false}
+  }
+}

@@ -1,0 +1,157 @@
+name: Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deterministic-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Build the digest-pinned tool container
+        run: docker build --file container/Containerfile --tag gmsh-doc-cn:check .
+      - name: Run unit tests
+        run: >-
+          docker run --rm --volume "$PWD:/workspace"
+          --entrypoint python gmsh-doc-cn:check
+          -m unittest discover -v
+      - name: Validate the committed Chinese PO with GNU gettext
+        run: >-
+          docker run --rm --volume "$PWD:/workspace"
+          --entrypoint msgfmt gmsh-doc-cn:check
+          --check --check-header --output-file=/dev/null po/zh_CN.po
+      - name: Fetch and verify fixed upstream archive
+        run: docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check fetch
+      - name: Run fixed-release integration tests after fetching the source
+        run: >-
+          docker run --rm --volume "$PWD:/workspace"
+          --entrypoint python gmsh-doc-cn:check
+          -m unittest discover -v
+      - name: Regenerate deterministic translation baselines
+        run: >-
+          docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check baseline
+          --source upstream/cache/source/gmsh-4.15.2-source
+          --output build/generated
+          --po po/zh_CN.po
+      - name: Compare committed deterministic outputs
+        run: |
+          diff -u po/gmsh.pot build/generated/po/gmsh.pot
+          diff -u po/zh_CN.po build/generated/po/zh_CN.po
+          diff -u glossary/terms.csv build/generated/glossary/terms.csv
+          diff -u benchmarks/units.jsonl build/generated/benchmarks/units.jsonl
+          for name in ordinary-tutorial script-api option-field-plugin format-compile-faq; do
+            diff -u "benchmarks/categories/$name.jsonl" "build/generated/benchmarks/categories/$name.jsonl"
+          done
+          diff -u benchmarks/five-unit-smoke.jsonl build/generated/benchmarks/five-unit-smoke.jsonl
+          diff -u benchmarks/five-unit-validation.json build/generated/benchmarks/five-unit-validation.json
+          diff -u benchmarks/reference-initial-validation-v1.json build/generated/benchmarks/reference-initial-validation-v1.json
+          diff -u benchmarks/reference-validation-v1.json build/generated/benchmarks/reference-validation-v1.json
+          diff -u benchmarks/qualification-v1.json build/generated/benchmarks/qualification-v1.json
+          diff -u tests/fixtures/pilot/protected.jsonl build/generated/tests/fixtures/pilot/protected.jsonl
+          diff -u tests/fixtures/pilot/structure.jsonl build/generated/tests/fixtures/pilot/structure.jsonl
+          diff -u tests/fixtures/pilot/code-files.json build/generated/tests/fixtures/pilot/code-files.json
+          diff -u tests/fixtures/pilot/pilot-report.json build/generated/tests/fixtures/pilot/pilot-report.json
+      - name: Build reproducible English manual
+        run: >-
+          docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check
+          reproducible-english
+          --source upstream/cache/source/gmsh-4.15.2-source
+          --output reports/english-artifacts.json
+      - name: Prove the full translation reaches formal state
+        run: >-
+          docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check status
+          --source upstream/cache/source/gmsh-4.15.2-source
+          --po po/zh_CN.po
+          --reviews reviews/v4.15.2
+          --review-manifest reviews/v4.15.2/batches.json
+          --check-all
+          --checks-output reports/deterministic-checks.json
+          --output reports/status.json
+      - name: Verify the full status result
+        run: |
+          diff -u reviews/v4.15.2/deterministic-checks-v1.json reports/deterministic-checks.json
+          python -c "import json; r=json.load(open('reports/status.json', encoding='utf-8')); assert r['counts'] == {'formal': 6916}; assert r['obsolete_count'] == 20"
+      - name: Build the reproducible bilingual preview
+        run: >-
+          docker run --rm --volume "$PWD:/workspace" gmsh-doc-cn:check
+          reproducible-preview
+          --source upstream/cache/source/gmsh-4.15.2-source
+          --dist build/preview-site
+          --status reports/status.json
+          --check-all
+          --output reports/preview-artifacts.json
+      - name: Verify preview boundaries
+        run: >-
+          python -c "import json; r=json.load(open('reports/preview-artifacts.json', encoding='utf-8'));
+          assert r['reproducible'] is True;
+          assert (r['formal_unit_count'], r['fallback_unit_count']) == (6916, 0);
+          assert r['english_root'] == 'v4.15.2/en';
+          assert r['preview_root'] == 'preview/v4.15.2/zh-cn';
+          assert r['preview_html_file_count'] == r['noindex_nofollow_page_count'] == r['visible_preview_marker_page_count'];
+          assert r['english_fallback_marker_page_count'] == 0;
+          assert r['english_duplicate_anchor_count'] == r['preview_duplicate_anchor_count'] == 0;
+          assert r['missing_english_anchor_count'] == 0;
+          assert r['preview_added_broken_internal_link_count'] == 0;
+          assert r['site_absolute_link_count'] > 0 and r['broken_site_absolute_link_count'] == 0;
+          assert r['resource_link_count'] > 0 and r['broken_resource_link_count'] == 0;
+          assert r['warning_fingerprints']['preview_additions'] == []"
+      - name: Preserve deterministic reports
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: deterministic-reports
+          path: |
+            reports/english-artifacts.json
+            reports/status.json
+            reports/deterministic-checks.json
+            reports/preview-artifacts.json
+            build/generated/tests/fixtures/pilot/pilot-report.json
+            build/generated/benchmarks/qualification-v1.json
+            build/generated/benchmarks/reference-initial-validation-v1.json
+            build/generated/benchmarks/reference-validation-v1.json
+          if-no-files-found: error
+      - name: Preserve the bilingual preview site
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bilingual-preview-site
+          path: build/preview-site
+          if-no-files-found: error
+
+      - name: Add the GitHub Pages landing page
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: install --mode=0644 site/index.html build/preview-site/index.html
+
+      - name: Upload the GitHub Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: build/preview-site
+
+  deploy-pages:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: deterministic-checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0

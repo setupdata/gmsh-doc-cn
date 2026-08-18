@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "upstream_version", "benchmark_count", "translation", "round_0", "revision", "round_1", "qualification_state", "paid_api_calls"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "upstream_version": {"const": "4.15.2"},
+    "benchmark_count": {"const": 5},
+    "translation": {"type": "object"},
+    "round_0": {"type": "object"},
+    "revision": {"type": "object"},
+    "round_1": {"type": "object"},
+    "qualification_state": {"const": "accepted"},
+    "paid_api_calls": {"const": 0}
+  }
+}

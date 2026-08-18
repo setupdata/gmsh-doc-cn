@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "extractor",
+    "upstream_manifest_sha256",
+    "tool_lock_sha256",
+    "tool_versions",
+    "html_anchor_baseline_sha256",
+    "texinfo_warning_baseline_sha256",
+    "unit_count",
+    "obsolete_input_context_count",
+    "pilot_unit_count",
+    "protected_token_count",
+    "structure_record_count",
+    "external_file_count",
+    "benchmark_unit_count",
+    "smoke_validation",
+    "term_candidate_count",
+    "po4a_admitted",
+    "po4a_evaluation",
+    "po4a_reason",
+    "round_trip",
+    "round_trip_byte_identity",
+    "round_trip_comparisons",
+    "benchmark_qualification_state"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "extractor": {"const": "gmsh-doc-cn-custom-texinfo-v1"},
+    "upstream_manifest_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "tool_lock_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "tool_versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["texinfo", "gettext", "po4a"],
+      "properties": {
+        "texinfo": {"type": "string", "minLength": 1},
+        "gettext": {"type": "string", "minLength": 1},
+        "po4a": {"type": "string", "minLength": 1}
+      }
+    },
+    "html_anchor_baseline_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "texinfo_warning_baseline_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "unit_count": {"type": "integer", "minimum": 1},
+    "obsolete_input_context_count": {"type": "integer", "minimum": 0},
+    "pilot_unit_count": {"type": "integer", "minimum": 1},
+    "protected_token_count": {"type": "integer", "minimum": 1},
+    "structure_record_count": {"type": "integer", "minimum": 1},
+    "external_file_count": {"type": "integer", "minimum": 1},
+    "benchmark_unit_count": {"type": "integer", "minimum": 1},
+    "smoke_validation": {"enum": ["pass", "not-run"]},
+    "term_candidate_count": {"type": "integer", "minimum": 1},
+    "po4a_admitted": {"const": false},
+    "po4a_evaluation": {"type": "string", "minLength": 1},
+    "po4a_reason": {"type": "string", "minLength": 1},
+    "round_trip": {"enum": ["pass", "fail"]},
+    "round_trip_byte_identity": {"type": "boolean"},
+    "round_trip_comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "passed", "changed_kinds"],
+        "properties": {
+          "name": {"enum": ["empty", "current-po"]},
+          "passed": {"type": "boolean"},
+          "changed_kinds": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "benchmark_qualification_state": {"const": "qualified"}
+  }
+}

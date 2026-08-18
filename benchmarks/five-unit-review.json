@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "upstream_version": "4.15.2",
+  "benchmark_count": 5,
+  "translation": {
+    "result": "complete",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "xhigh",
+    "run_ids": [
+      "smoke_translate_1",
+      "smoke_translate_2",
+      "smoke_translate_3",
+      "smoke_translate_4",
+      "smoke_translate_5"
+    ]
+  },
+  "round_0": {
+    "language_review": {
+      "result": "revise",
+      "reviewed_count": 5,
+      "issue_count": 2,
+      "issues": [
+        {
+          "benchmark_id": "bmk-v1-002",
+          "code": "language.geometry-wording",
+          "severity": "minor",
+          "message": "将 geometry 译为‘几何’，避免把泛指几何限定为‘几何体’。"
+        },
+        {
+          "benchmark_id": "bmk-v1-031",
+          "code": "language.angular-opening",
+          "severity": "minor",
+          "message": "将 angular opening 调整为自然且准确的‘开口角’。"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "xhigh",
+      "run_id": "smoke_review_language"
+    },
+    "technical_review": {
+      "result": "accept",
+      "reviewed_count": 5,
+      "issue_count": 0,
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "xhigh",
+      "run_id": "smoke_review_technical"
+    }
+  },
+  "revision": {
+    "result": "complete",
+    "round": 1,
+    "revised_benchmark_ids": ["bmk-v1-002", "bmk-v1-031"],
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "xhigh",
+    "run_id": "smoke_revise"
+  },
+  "round_1": {
+    "language_review": {
+      "result": "accept",
+      "reviewed_count": 5,
+      "issue_count": 0,
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "xhigh",
+      "run_id": "smoke_rereview_language"
+    },
+    "technical_review": {
+      "result": "accept",
+      "reviewed_count": 5,
+      "issue_count": 0,
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "xhigh",
+      "run_id": "smoke_rereview_technical"
+    },
+    "deterministic_checks": {
+      "result": "pass",
+      "report": "benchmarks/five-unit-validation.json"
+    }
+  },
+  "qualification_state": "accepted",
+  "paid_api_calls": 0
+}

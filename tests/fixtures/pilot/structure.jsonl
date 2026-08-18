@@ -1,0 +1,538 @@
+{"kind": "node", "node": "Namespace gmsh", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh, Namespace gmsh/option, , Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/option", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/option, Namespace gmsh/model, Namespace gmsh, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/model", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/model, Namespace gmsh/model/mesh, Namespace gmsh/option, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/model/mesh", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/model/mesh, Namespace gmsh/model/mesh/field, Namespace gmsh/model, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/model/mesh/field", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/model/mesh/field, Namespace gmsh/model/geo, Namespace gmsh/model/mesh, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/model/geo", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/model/geo, Namespace gmsh/model/geo/mesh, Namespace gmsh/model/mesh/field, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/model/geo/mesh", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/model/geo/mesh, Namespace gmsh/model/occ, Namespace gmsh/model/geo, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/model/occ", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/model/occ, Namespace gmsh/model/occ/mesh, Namespace gmsh/model/geo/mesh, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/model/occ/mesh", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/model/occ/mesh, Namespace gmsh/view, Namespace gmsh/model/occ, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/view", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/view, Namespace gmsh/view/option, Namespace gmsh/model/occ/mesh, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/view/option", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/view/option, Namespace gmsh/algorithm, Namespace gmsh/view, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/algorithm", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/algorithm, Namespace gmsh/plugin, Namespace gmsh/view/option, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/plugin", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/plugin, Namespace gmsh/graphics, Namespace gmsh/algorithm, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/graphics", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/graphics, Namespace gmsh/fltk, Namespace gmsh/plugin, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/fltk", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/fltk, Namespace gmsh/parser, Namespace gmsh/graphics, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/parser", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/parser, Namespace gmsh/onelab, Namespace gmsh/fltk, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/onelab", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/onelab, Namespace gmsh/logger, Namespace gmsh/parser, Gmsh application programming interface"}
+{"kind": "node", "node": "Namespace gmsh/logger", "relative_file": "doc/texinfo/api.texi", "value": "Namespace gmsh/logger, , Namespace gmsh/onelab, Gmsh application programming interface"}
+{"kind": "include", "node": "Top", "relative_file": "doc/texinfo/gmsh.texi", "value": "version.texi"}
+{"kind": "node", "node": "Top", "relative_file": "doc/texinfo/gmsh.texi", "value": "Top, Obtaining Gmsh, (dir), (dir)"}
+{"kind": "node", "node": "Obtaining Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "Obtaining Gmsh, Copying conditions, Top, Top"}
+{"kind": "cindex", "node": "Obtaining Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Obtaining Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Obtaining Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "Copying conditions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Copying conditions, Reporting a bug, Obtaining Gmsh, Top"}
+{"kind": "cindex", "node": "Copying conditions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Copying conditions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Copying conditions", "relative_file": "doc/texinfo/gmsh.texi", "value": "License"}
+{"kind": "ref", "node": "Copying conditions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Copyright and credits"}
+{"kind": "node", "node": "Reporting a bug", "relative_file": "doc/texinfo/gmsh.texi", "value": "Reporting a bug, Overview of Gmsh, Copying conditions, Top"}
+{"kind": "cindex", "node": "Reporting a bug", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Reporting a bug", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Reporting a bug", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Reporting a bug", "relative_file": "doc/texinfo/gmsh.texi", "value": "Frequently asked questions"}
+{"kind": "node", "node": "Overview of Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "Overview of Gmsh, Gmsh tutorial, Reporting a bug, Top"}
+{"kind": "cindex", "node": "Overview of Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Overview of Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Overview of Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh graphical user interface"}
+{"kind": "pxref", "node": "Overview of Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh command-line interface"}
+{"kind": "ref", "node": "Overview of Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh scripting language"}
+{"kind": "ref", "node": "Overview of Gmsh", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\napplication programming interface"}
+{"kind": "node", "node": "Geometry module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry module, Mesh module, Overview of Gmsh, Overview of Gmsh"}
+{"kind": "pxref", "node": "Geometry module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry scripting commands"}
+{"kind": "pxref", "node": "Geometry module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Namespace\ngmsh/model"}
+{"kind": "ref", "node": "Geometry module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Elementary entities vs physical\ngroups"}
+{"kind": "ref", "node": "Geometry module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh tutorial"}
+{"kind": "ref", "node": "Geometry module", "relative_file": "doc/texinfo/gmsh.texi", "value": "t1"}
+{"kind": "pxref", "node": "Geometry module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh graphical user interface"}
+{"kind": "ref", "node": "Geometry module", "relative_file": "doc/texinfo/gmsh.texi", "value": "t13"}
+{"kind": "node", "node": "Mesh module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh module, Solver module, Geometry module, Overview of Gmsh"}
+{"kind": "ref", "node": "Mesh module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh mesh size fields"}
+{"kind": "ref", "node": "Mesh module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\napplication programming interface"}
+{"kind": "pxref", "node": "Mesh module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh options"}
+{"kind": "node", "node": "Choosing the right unstructured algorithm", "relative_file": "doc/texinfo/gmsh.texi", "value": "Choosing the right unstructured algorithm, Specifying mesh element sizes, Mesh module, Mesh module"}
+{"kind": "pxref", "node": "Choosing the right unstructured algorithm", "relative_file": "doc/texinfo/gmsh.texi", "value": "Specifying mesh element sizes"}
+{"kind": "pxref", "node": "Choosing the right unstructured algorithm", "relative_file": "doc/texinfo/gmsh.texi", "value": "Compiling the source\ncode"}
+{"kind": "pxref", "node": "Choosing the right unstructured algorithm", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh command-line interface"}
+{"kind": "ref", "node": "Choosing the right unstructured algorithm", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options"}
+{"kind": "ref", "node": "Choosing the right unstructured algorithm", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh options"}
+{"kind": "node", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "Specifying mesh element sizes, Elementary entities vs physical groups, Choosing the right unstructured algorithm, Mesh module"}
+{"kind": "cindex", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh mesh size fields"}
+{"kind": "ref", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing module"}
+{"kind": "ref", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh file formats"}
+{"kind": "pxref", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "Namespace\ngmsh/model/mesh"}
+{"kind": "ref", "node": "Specifying mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh options"}
+{"kind": "node", "node": "Elementary entities vs physical groups", "relative_file": "doc/texinfo/gmsh.texi", "value": "Elementary entities vs physical groups,  , Specifying mesh element sizes, Mesh module"}
+{"kind": "pxref", "node": "Elementary entities vs physical groups", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry module"}
+{"kind": "pxref", "node": "Elementary entities vs physical groups", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh file\nformats"}
+{"kind": "pxref", "node": "Elementary entities vs physical groups", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh options"}
+{"kind": "node", "node": "Solver module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Solver module, Post-processing module, Mesh module, Overview of Gmsh"}
+{"kind": "node", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing module, What Gmsh is pretty good at, Solver module, Overview of Gmsh"}
+{"kind": "ref", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting\ncommands"}
+{"kind": "ref", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh file formats"}
+{"kind": "pxref", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Namespace gmsh/view"}
+{"kind": "ref", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing\noptions"}
+{"kind": "ref", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing options"}
+{"kind": "pxref", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh plugins"}
+{"kind": "ref", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "t8"}
+{"kind": "ref", "node": "Post-processing module", "relative_file": "doc/texinfo/gmsh.texi", "value": "t9"}
+{"kind": "node", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "What Gmsh is pretty good at, and what Gmsh is not so good at, Post-processing module, Overview of Gmsh"}
+{"kind": "ref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "User-defined macros"}
+{"kind": "ref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Loops and\nconditionals"}
+{"kind": "ref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Other general commands"}
+{"kind": "pxref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application programming\ninterface"}
+{"kind": "pxref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Installing and running Gmsh\non your computer"}
+{"kind": "ref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "t16"}
+{"kind": "ref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "t20"}
+{"kind": "ref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh\nmodule"}
+{"kind": "pxref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Specifying\nmesh element sizes"}
+{"kind": "pxref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Solver module"}
+{"kind": "pxref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing module"}
+{"kind": "ref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "t8"}
+{"kind": "pxref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Compiling the source code"}
+{"kind": "pxref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\noptions"}
+{"kind": "pxref", "node": "What Gmsh is pretty good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Copying conditions"}
+{"kind": "node", "node": "and what Gmsh is not so good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "and what Gmsh is not so good at, Installing and running Gmsh on your computer, What Gmsh is pretty good at, Overview of Gmsh"}
+{"kind": "pxref", "node": "and what Gmsh is not so good at", "relative_file": "doc/texinfo/gmsh.texi", "value": "Information for\ndevelopers"}
+{"kind": "node", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "Installing and running Gmsh on your computer,  , and what Gmsh is not so good at, Overview of Gmsh"}
+{"kind": "cindex", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh graphical user interface"}
+{"kind": "pxref", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh command-line interface"}
+{"kind": "pxref", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh scripting language"}
+{"kind": "pxref", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "Solver module"}
+{"kind": "ref", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "Compiling the source code"}
+{"kind": "pxref", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application programming interface"}
+{"kind": "ref", "node": "Installing and running Gmsh on your computer", "relative_file": "doc/texinfo/gmsh.texi", "value": "Compiling the source code"}
+{"kind": "node", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh tutorial, Gmsh graphical user interface, Overview of Gmsh, Top"}
+{"kind": "cindex", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "t1"}
+{"kind": "pxref", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh scripting language"}
+{"kind": "pxref", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh graphical\nuser interface"}
+{"kind": "pxref", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh command-line\ninterface"}
+{"kind": "pxref", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application\nprogramming interface"}
+{"kind": "pxref", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "Installing and running Gmsh on your\ncomputer"}
+{"kind": "node", "node": "t1", "relative_file": "doc/texinfo/gmsh.texi", "value": "t1, t2, Gmsh tutorial, Gmsh tutorial"}
+{"kind": "image", "node": "t1", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t1,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t1", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t1.geo"}
+{"kind": "node", "node": "t2", "relative_file": "doc/texinfo/gmsh.texi", "value": "t2, t3, t1, Gmsh tutorial"}
+{"kind": "image", "node": "t2", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t2,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t2", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t2.geo"}
+{"kind": "node", "node": "t3", "relative_file": "doc/texinfo/gmsh.texi", "value": "t3, t4, t2, Gmsh tutorial"}
+{"kind": "image", "node": "t3", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t3,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t3", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t3.geo"}
+{"kind": "node", "node": "t4", "relative_file": "doc/texinfo/gmsh.texi", "value": "t4, t5, t3, Gmsh tutorial"}
+{"kind": "image", "node": "t4", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t4,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t4", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t4.geo"}
+{"kind": "node", "node": "t5", "relative_file": "doc/texinfo/gmsh.texi", "value": "t5, t6, t4, Gmsh tutorial"}
+{"kind": "image", "node": "t5", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t5,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t5", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t5.geo"}
+{"kind": "node", "node": "t6", "relative_file": "doc/texinfo/gmsh.texi", "value": "t6, t7, t5, Gmsh tutorial"}
+{"kind": "image", "node": "t6", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t6,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t6", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t6.geo"}
+{"kind": "node", "node": "t7", "relative_file": "doc/texinfo/gmsh.texi", "value": "t7, t8, t6, Gmsh tutorial"}
+{"kind": "image", "node": "t7", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t7,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t7", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t7.geo"}
+{"kind": "node", "node": "t8", "relative_file": "doc/texinfo/gmsh.texi", "value": "t8, t9, t7, Gmsh tutorial"}
+{"kind": "image", "node": "t8", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t8,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t8", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t8.geo"}
+{"kind": "node", "node": "t9", "relative_file": "doc/texinfo/gmsh.texi", "value": "t9, t10, t8, Gmsh tutorial"}
+{"kind": "image", "node": "t9", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t9,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t9", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t9.geo"}
+{"kind": "node", "node": "t10", "relative_file": "doc/texinfo/gmsh.texi", "value": "t10, t11, t9, Gmsh tutorial"}
+{"kind": "image", "node": "t10", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t10,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t10", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t10.geo"}
+{"kind": "node", "node": "t11", "relative_file": "doc/texinfo/gmsh.texi", "value": "t11, t12, t10, Gmsh tutorial"}
+{"kind": "image", "node": "t11", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t11,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t11", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t11.geo"}
+{"kind": "node", "node": "t12", "relative_file": "doc/texinfo/gmsh.texi", "value": "t12, t13, t11, Gmsh tutorial"}
+{"kind": "image", "node": "t12", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t12,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t12", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t12.geo"}
+{"kind": "node", "node": "t13", "relative_file": "doc/texinfo/gmsh.texi", "value": "t13, t14, t12, Gmsh tutorial"}
+{"kind": "image", "node": "t13", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t13,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t13", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t13.geo"}
+{"kind": "node", "node": "t14", "relative_file": "doc/texinfo/gmsh.texi", "value": "t14, t15, t13, Gmsh tutorial"}
+{"kind": "image", "node": "t14", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t14,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t14", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t14.geo"}
+{"kind": "node", "node": "t15", "relative_file": "doc/texinfo/gmsh.texi", "value": "t15, t16, t14, Gmsh tutorial"}
+{"kind": "image", "node": "t15", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t15,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t15", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t15.geo"}
+{"kind": "node", "node": "t16", "relative_file": "doc/texinfo/gmsh.texi", "value": "t16, t17, t15, Gmsh tutorial"}
+{"kind": "image", "node": "t16", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t16,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t16", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t16.geo"}
+{"kind": "node", "node": "t17", "relative_file": "doc/texinfo/gmsh.texi", "value": "t17, t18, t16, Gmsh tutorial"}
+{"kind": "image", "node": "t17", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t17,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t17", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t17.geo"}
+{"kind": "node", "node": "t18", "relative_file": "doc/texinfo/gmsh.texi", "value": "t18, t19, t17, Gmsh tutorial"}
+{"kind": "image", "node": "t18", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t18,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t18", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t18.geo"}
+{"kind": "node", "node": "t19", "relative_file": "doc/texinfo/gmsh.texi", "value": "t19, t20, t18, Gmsh tutorial"}
+{"kind": "image", "node": "t19", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t19,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t19", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t19.geo"}
+{"kind": "node", "node": "t20", "relative_file": "doc/texinfo/gmsh.texi", "value": "t20, t21, t19, Gmsh tutorial"}
+{"kind": "image", "node": "t20", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t20,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t20", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t20.geo"}
+{"kind": "node", "node": "t21", "relative_file": "doc/texinfo/gmsh.texi", "value": "t21, x1, t20, Gmsh tutorial"}
+{"kind": "image", "node": "t21", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t21,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "t21", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t21.geo"}
+{"kind": "node", "node": "x1", "relative_file": "doc/texinfo/gmsh.texi", "value": "x1, x2, t21, Gmsh tutorial"}
+{"kind": "image", "node": "x1", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x1,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "x1", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x1.py"}
+{"kind": "node", "node": "x2", "relative_file": "doc/texinfo/gmsh.texi", "value": "x2, x3, x1, Gmsh tutorial"}
+{"kind": "image", "node": "x2", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x2,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "x2", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x2.py"}
+{"kind": "node", "node": "x3", "relative_file": "doc/texinfo/gmsh.texi", "value": "x3, x4, x2, Gmsh tutorial"}
+{"kind": "image", "node": "x3", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x3,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "x3", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x3.py"}
+{"kind": "node", "node": "x4", "relative_file": "doc/texinfo/gmsh.texi", "value": "x4, x5, x3, Gmsh tutorial"}
+{"kind": "image", "node": "x4", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x4,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "x4", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x4.py"}
+{"kind": "node", "node": "x5", "relative_file": "doc/texinfo/gmsh.texi", "value": "x5, x6, x4, Gmsh tutorial"}
+{"kind": "image", "node": "x5", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x5,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "x5", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x5.py"}
+{"kind": "node", "node": "x6", "relative_file": "doc/texinfo/gmsh.texi", "value": "x6, x7, x5, Gmsh tutorial"}
+{"kind": "verbatiminclude", "node": "x6", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x6.py"}
+{"kind": "node", "node": "x7", "relative_file": "doc/texinfo/gmsh.texi", "value": "x7,  , x6, Gmsh tutorial"}
+{"kind": "image", "node": "x7", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x7,9cm,,<translatable-image-alt>"}
+{"kind": "verbatiminclude", "node": "x7", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x7.py"}
+{"kind": "node", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh graphical user interface, Gmsh command-line interface, Gmsh tutorial, Top"}
+{"kind": "cindex", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Installing and\nrunning Gmsh on your computer"}
+{"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options"}
+{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui,10.5cm,,<translatable-image-alt>"}
+{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui_add_rectangle,10.5cm,,<translatable-image-alt>"}
+{"kind": "pxref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options"}
+{"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh scripting language"}
+{"kind": "pxref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh tutorial"}
+{"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Keyboard shortcuts"}
+{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui_mesh,10.5cm,,<translatable-image-alt>"}
+{"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "t1"}
+{"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\noptions"}
+{"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Namespace gmsh/fltk"}
+{"kind": "node", "node": "Mouse actions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mouse actions, Keyboard shortcuts, Gmsh graphical user interface, Gmsh graphical user interface"}
+{"kind": "cindex", "node": "Mouse actions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Mouse actions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "include", "node": "Mouse actions", "relative_file": "doc/texinfo/gmsh.texi", "value": "mouse.texi"}
+{"kind": "node", "node": "Keyboard shortcuts", "relative_file": "doc/texinfo/gmsh.texi", "value": "Keyboard shortcuts,  , Mouse actions, Gmsh graphical user interface"}
+{"kind": "cindex", "node": "Keyboard shortcuts", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Keyboard shortcuts", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Keyboard shortcuts", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "include", "node": "Keyboard shortcuts", "relative_file": "doc/texinfo/gmsh.texi", "value": "shortcuts.texi"}
+{"kind": "node", "node": "Gmsh command-line interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh command-line interface, Gmsh scripting language, Gmsh graphical user interface, Top"}
+{"kind": "cindex", "node": "Gmsh command-line interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Gmsh command-line interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Gmsh command-line interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh scripting language"}
+{"kind": "pxref", "node": "Gmsh command-line interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application programming interface"}
+{"kind": "pxref", "node": "Gmsh command-line interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh options"}
+{"kind": "include", "node": "Gmsh command-line interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "commandline.texi"}
+{"kind": "node", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh scripting language, Gmsh application programming interface, Gmsh command-line interface, Top"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting commands"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "Floating point expressions"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "String expressions"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "Loops and conditionals"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "User-defined macros"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\napplication programming interface"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "General scripting commands"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry\nscripting commands"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh scripting commands"}
+{"kind": "pxref", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting commands"}
+{"kind": "findex", "node": "Gmsh scripting language", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "General scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "General scripting commands, Geometry scripting commands, Gmsh scripting language, Gmsh scripting language"}
+{"kind": "node", "node": "Comments", "relative_file": "doc/texinfo/gmsh.texi", "value": "Comments, Floating point expressions, General scripting commands, General scripting commands"}
+{"kind": "cindex", "node": "Comments", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Comments", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Comments", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Comments", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Floating point expressions, String expressions, Comments, General scripting commands"}
+{"kind": "cindex", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Loops and\nconditionals"}
+{"kind": "ref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Operators"}
+{"kind": "ref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Built-in functions"}
+{"kind": "ref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh options"}
+{"kind": "pxref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options"}
+{"kind": "cindex", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Transformations"}
+{"kind": "ref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Extrusions"}
+{"kind": "ref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Boolean\noperations"}
+{"kind": "ref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Other general commands"}
+{"kind": "pxref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Points"}
+{"kind": "ref", "node": "Floating point expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh tutorial"}
+{"kind": "node", "node": "String expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "String expressions, Color expressions, Floating point expressions, General scripting commands"}
+{"kind": "cindex", "node": "String expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "String expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "String expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\noptions"}
+{"kind": "ref", "node": "String expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "t8"}
+{"kind": "node", "node": "Color expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Color expressions, Operators, String expressions, General scripting commands"}
+{"kind": "cindex", "node": "Color expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Color expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Color expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh options"}
+{"kind": "ref", "node": "Color expressions", "relative_file": "doc/texinfo/gmsh.texi", "value": "t3"}
+{"kind": "node", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "Operators, Built-in functions, Color expressions, General scripting commands"}
+{"kind": "cindex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Operators", "relative_file": "doc/texinfo/gmsh.texi", "value": "Other general commands"}
+{"kind": "node", "node": "Built-in functions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Built-in functions, User-defined macros, Operators, General scripting commands"}
+{"kind": "cindex", "node": "Built-in functions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Built-in functions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "User-defined macros", "relative_file": "doc/texinfo/gmsh.texi", "value": "User-defined macros, Loops and conditionals, Built-in functions, General scripting commands"}
+{"kind": "cindex", "node": "User-defined macros", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "User-defined macros", "relative_file": "doc/texinfo/gmsh.texi", "value": "t5"}
+{"kind": "node", "node": "Loops and conditionals", "relative_file": "doc/texinfo/gmsh.texi", "value": "Loops and conditionals, Other general commands, User-defined macros, General scripting commands"}
+{"kind": "cindex", "node": "Loops and conditionals", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Loops and conditionals", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Other general commands,  , Loops and conditionals, General scripting commands"}
+{"kind": "cindex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Compiling the source code"}
+{"kind": "ref", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry\nmodule"}
+{"kind": "pxref", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "User-defined macros"}
+{"kind": "pxref", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry options"}
+{"kind": "pxref", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Floating point expressions"}
+{"kind": "ref", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "t5"}
+{"kind": "ref", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Floating point expressions"}
+{"kind": "pxref", "node": "Other general commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options"}
+{"kind": "node", "node": "Geometry scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry scripting commands, Mesh scripting commands, General scripting commands, Gmsh scripting language"}
+{"kind": "cindex", "node": "Geometry scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Geometry scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "Points", "relative_file": "doc/texinfo/gmsh.texi", "value": "Points, Curves, Geometry scripting commands, Geometry scripting commands"}
+{"kind": "cindex", "node": "Points", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Points", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Points", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Points", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Points", "relative_file": "doc/texinfo/gmsh.texi", "value": "Specifying mesh element sizes"}
+{"kind": "node", "node": "Curves", "relative_file": "doc/texinfo/gmsh.texi", "value": "Curves, Surfaces, Points, Geometry scripting commands"}
+{"kind": "cindex", "node": "Curves", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Curves", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Curves", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Curves", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Curves", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Curves", "relative_file": "doc/texinfo/gmsh.texi", "value": "Surfaces"}
+{"kind": "node", "node": "Surfaces", "relative_file": "doc/texinfo/gmsh.texi", "value": "Surfaces, Volumes, Curves, Geometry scripting commands"}
+{"kind": "cindex", "node": "Surfaces", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Surfaces", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Surfaces", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Surfaces", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Surfaces", "relative_file": "doc/texinfo/gmsh.texi", "value": "Volumes"}
+{"kind": "node", "node": "Volumes", "relative_file": "doc/texinfo/gmsh.texi", "value": "Volumes, Extrusions, Surfaces, Geometry scripting commands"}
+{"kind": "cindex", "node": "Volumes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Volumes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Volumes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Volumes", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "Extrusions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Extrusions, Boolean operations, Volumes, Geometry scripting commands"}
+{"kind": "cindex", "node": "Extrusions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Extrusions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Extrusions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Extrusions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Structured grids"}
+{"kind": "ref", "node": "Extrusions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Floating point expressions"}
+{"kind": "pxref", "node": "Extrusions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry\noptions"}
+{"kind": "node", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "Boolean operations, Transformations, Extrusions, Geometry scripting commands"}
+{"kind": "cindex", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Boolean operations", "relative_file": "doc/texinfo/gmsh.texi", "value": "Floating point expressions"}
+{"kind": "node", "node": "Transformations", "relative_file": "doc/texinfo/gmsh.texi", "value": "Transformations, Other geometry commands, Boolean operations, Geometry scripting commands"}
+{"kind": "cindex", "node": "Transformations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Transformations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Transformations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Transformations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Transformations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Transformations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "findex", "node": "Transformations", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "Other geometry commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Other geometry commands,  , Transformations, Geometry scripting commands"}
+{"kind": "pxref", "node": "Other geometry commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry options"}
+{"kind": "node", "node": "Mesh scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh scripting commands, Post-processing scripting commands, Geometry scripting commands, Gmsh scripting language"}
+{"kind": "cindex", "node": "Mesh scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Mesh scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Mesh scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh graphical user interface"}
+{"kind": "ref", "node": "Mesh scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\ncommand-line interface"}
+{"kind": "node", "node": "Mesh element sizes", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh element sizes, Structured grids, Mesh scripting commands, Mesh scripting commands"}
+{"kind": "node", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "Structured grids, Other mesh commands, Mesh element sizes, Mesh scripting commands"}
+{"kind": "cindex", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "Extrusions"}
+{"kind": "ref", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "t3"}
+{"kind": "pxref", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "Extrusions"}
+{"kind": "pxref", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "Extrusions"}
+{"kind": "pxref", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "Specifying mesh element\nsizes"}
+{"kind": "ref", "node": "Structured grids", "relative_file": "doc/texinfo/gmsh.texi", "value": "Specifying mesh\nelement sizes"}
+{"kind": "node", "node": "Other mesh commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Other mesh commands,  , Structured grids, Mesh scripting commands"}
+{"kind": "ref", "node": "Other mesh commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Transformations"}
+{"kind": "ref", "node": "Other mesh commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Transformations"}
+{"kind": "pxref", "node": "Other mesh commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh options"}
+{"kind": "node", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting commands,  , Mesh scripting commands, Gmsh scripting language"}
+{"kind": "cindex", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh plugins"}
+{"kind": "ref", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh plugins"}
+{"kind": "ref", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "t9"}
+{"kind": "ref", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "t4"}
+{"kind": "ref", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh file\nformats"}
+{"kind": "ref", "node": "Post-processing scripting commands", "relative_file": "doc/texinfo/gmsh.texi", "value": "Node ordering"}
+{"kind": "node", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application programming interface, Gmsh options, Gmsh scripting language, Top"}
+{"kind": "cindex", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh tutorial"}
+{"kind": "ref", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Source code structure"}
+{"kind": "ref", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH file\nformat"}
+{"kind": "ref", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH file format"}
+{"kind": "ref", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting commands"}
+{"kind": "include", "node": "Gmsh application programming interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "api.texi"}
+{"kind": "node", "node": "Gmsh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh options, Gmsh mesh size fields, Gmsh application programming interface, Top"}
+{"kind": "pxref", "node": "Gmsh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "General scripting commands"}
+{"kind": "pxref", "node": "Gmsh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Namespace gmsh/option"}
+{"kind": "ref", "node": "Gmsh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "t3"}
+{"kind": "ref", "node": "Gmsh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh command-line interface"}
+{"kind": "pxref", "node": "Gmsh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\ngraphical user interface"}
+{"kind": "pxref", "node": "Gmsh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options"}
+{"kind": "node", "node": "General options", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options, Print options, Gmsh options, Gmsh options"}
+{"kind": "include", "node": "General options", "relative_file": "doc/texinfo/gmsh.texi", "value": "opt_general.texi"}
+{"kind": "node", "node": "Print options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Print options, Geometry options, General options, Gmsh options"}
+{"kind": "include", "node": "Print options", "relative_file": "doc/texinfo/gmsh.texi", "value": "opt_print.texi"}
+{"kind": "node", "node": "Geometry options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry options, Mesh options, Print options, Gmsh options"}
+{"kind": "include", "node": "Geometry options", "relative_file": "doc/texinfo/gmsh.texi", "value": "opt_geometry.texi"}
+{"kind": "node", "node": "Mesh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh options, Solver options, Geometry options, Gmsh options"}
+{"kind": "include", "node": "Mesh options", "relative_file": "doc/texinfo/gmsh.texi", "value": "opt_mesh.texi"}
+{"kind": "node", "node": "Solver options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Solver options, Post-processing options, Mesh options, Gmsh options"}
+{"kind": "include", "node": "Solver options", "relative_file": "doc/texinfo/gmsh.texi", "value": "opt_solver.texi"}
+{"kind": "node", "node": "Post-processing options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing options, Post-processing view options, Solver options, Gmsh options"}
+{"kind": "cindex", "node": "Post-processing options", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Post-processing options", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "include", "node": "Post-processing options", "relative_file": "doc/texinfo/gmsh.texi", "value": "opt_post.texi"}
+{"kind": "node", "node": "Post-processing view options", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing view options,  , Post-processing options, Gmsh options"}
+{"kind": "include", "node": "Post-processing view options", "relative_file": "doc/texinfo/gmsh.texi", "value": "opt_view.texi"}
+{"kind": "node", "node": "Gmsh mesh size fields", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh mesh size fields, Gmsh plugins, Gmsh options, Top"}
+{"kind": "pxref", "node": "Gmsh mesh size fields", "relative_file": "doc/texinfo/gmsh.texi", "value": "Specifying mesh\nelement sizes"}
+{"kind": "pxref", "node": "Gmsh mesh size fields", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh\nelement sizes"}
+{"kind": "pxref", "node": "Gmsh mesh size fields", "relative_file": "doc/texinfo/gmsh.texi", "value": "Namespace\ngmsh/model/mesh/field"}
+{"kind": "ref", "node": "Gmsh mesh size fields", "relative_file": "doc/texinfo/gmsh.texi", "value": "t10"}
+{"kind": "include", "node": "Gmsh mesh size fields", "relative_file": "doc/texinfo/gmsh.texi", "value": "fields.texi"}
+{"kind": "node", "node": "Gmsh plugins", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh plugins, Gmsh file formats, Gmsh mesh size fields, Top"}
+{"kind": "cindex", "node": "Gmsh plugins", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Gmsh plugins", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "pxref", "node": "Gmsh plugins", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting commands"}
+{"kind": "pxref", "node": "Gmsh plugins", "relative_file": "doc/texinfo/gmsh.texi", "value": "Namespace gmsh/plugin"}
+{"kind": "ref", "node": "Gmsh plugins", "relative_file": "doc/texinfo/gmsh.texi", "value": "t9"}
+{"kind": "include", "node": "Gmsh plugins", "relative_file": "doc/texinfo/gmsh.texi", "value": "plugins.texi"}
+{"kind": "node", "node": "Gmsh file formats", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh file formats, Compiling the source code, Gmsh plugins, Top"}
+{"kind": "cindex", "node": "Gmsh file formats", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Gmsh file formats", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting commands"}
+{"kind": "node", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH file format, Node ordering, Gmsh file formats, Gmsh file formats"}
+{"kind": "cindex", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application programming interface"}
+{"kind": "ref", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "Source code\nstructure"}
+{"kind": "ref", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "Node ordering"}
+{"kind": "ref", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting commands"}
+{"kind": "ref", "node": "MSH file format", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application programming interface"}
+{"kind": "node", "node": "Node ordering", "relative_file": "doc/texinfo/gmsh.texi", "value": "Node ordering, Legacy formats, MSH file format, Gmsh file formats"}
+{"kind": "cindex", "node": "Node ordering", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "Legacy formats", "relative_file": "doc/texinfo/gmsh.texi", "value": "Legacy formats,  , Node ordering, Gmsh file formats"}
+{"kind": "node", "node": "MSH file format version 2 (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH file format version 2 (Legacy), MSH file format version 1 (Legacy), Legacy formats, Legacy formats"}
+{"kind": "ref", "node": "MSH file format version 2 (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH file\nformat"}
+{"kind": "ref", "node": "MSH file format version 2 (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH\nfile format"}
+{"kind": "ref", "node": "MSH file format version 2 (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "Node ordering"}
+{"kind": "ref", "node": "MSH file format version 2 (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing scripting commands"}
+{"kind": "node", "node": "MSH file format version 1 (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH file format version 1 (Legacy), POS ASCII file format (Legacy), MSH file format version 2 (Legacy), Legacy formats"}
+{"kind": "ref", "node": "MSH file format version 1 (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH file\nformat"}
+{"kind": "ref", "node": "MSH file format version 1 (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "Node ordering"}
+{"kind": "node", "node": "POS ASCII file format (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "POS ASCII file format (Legacy), POS binary file format (Legacy), MSH file format version 1 (Legacy), Legacy formats"}
+{"kind": "ref", "node": "POS ASCII file format (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "MSH file format"}
+{"kind": "ref", "node": "POS ASCII file format (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "Node ordering"}
+{"kind": "node", "node": "POS binary file format (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "POS binary file format (Legacy),  , POS ASCII file format (Legacy), Legacy formats"}
+{"kind": "ref", "node": "POS binary file format (Legacy)", "relative_file": "doc/texinfo/gmsh.texi", "value": "POS ASCII file format (Legacy)"}
+{"kind": "node", "node": "Compiling the source code", "relative_file": "doc/texinfo/gmsh.texi", "value": "Compiling the source code, Information for developers, Gmsh file formats, Top"}
+{"kind": "include", "node": "Compiling the source code", "relative_file": "doc/texinfo/gmsh.texi", "value": "cmake_options.texi"}
+{"kind": "node", "node": "Information for developers", "relative_file": "doc/texinfo/gmsh.texi", "value": "Information for developers, Frequently asked questions, Compiling the source code, Top"}
+{"kind": "cindex", "node": "Information for developers", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Information for developers", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "ref", "node": "Information for developers", "relative_file": "doc/texinfo/gmsh.texi", "value": "Compiling the source code"}
+{"kind": "ref", "node": "Information for developers", "relative_file": "doc/texinfo/gmsh.texi", "value": "Frequently asked questions"}
+{"kind": "node", "node": "Source code structure", "relative_file": "doc/texinfo/gmsh.texi", "value": "Source code structure, Coding style, Information for developers, Information for developers"}
+{"kind": "node", "node": "Coding style", "relative_file": "doc/texinfo/gmsh.texi", "value": "Coding style, Adding a new option, Source code structure, Information for developers"}
+{"kind": "node", "node": "Adding a new option", "relative_file": "doc/texinfo/gmsh.texi", "value": "Adding a new option,  , Coding style, Information for developers"}
+{"kind": "node", "node": "Frequently asked questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Frequently asked questions, Version history, Information for developers, Top"}
+{"kind": "cindex", "node": "Frequently asked questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Frequently asked questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Frequently asked questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "The basics", "relative_file": "doc/texinfo/gmsh.texi", "value": "The basics, Installation problems, Frequently asked questions, Frequently asked questions"}
+{"kind": "ref", "node": "The basics", "relative_file": "doc/texinfo/gmsh.texi", "value": "License"}
+{"kind": "pxref", "node": "The basics", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application programming\ninterface"}
+{"kind": "ref", "node": "The basics", "relative_file": "doc/texinfo/gmsh.texi", "value": "Copying conditions"}
+{"kind": "node", "node": "Installation problems", "relative_file": "doc/texinfo/gmsh.texi", "value": "Installation problems, General questions, The basics, Frequently asked questions"}
+{"kind": "ref", "node": "Installation problems", "relative_file": "doc/texinfo/gmsh.texi", "value": "Compiling the source code"}
+{"kind": "node", "node": "General questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "General questions, Geometry module questions, Installation problems, Frequently asked questions"}
+{"kind": "ref", "node": "General questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "t8"}
+{"kind": "node", "node": "Geometry module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Geometry module questions, Mesh module questions, General questions, Frequently asked questions"}
+{"kind": "node", "node": "Mesh module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Mesh module questions, Solver module questions, Geometry module questions, Frequently asked questions"}
+{"kind": "ref", "node": "Mesh module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "t1"}
+{"kind": "ref", "node": "Mesh module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "x7"}
+{"kind": "ref", "node": "Mesh module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "x7"}
+{"kind": "node", "node": "Solver module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Solver module questions, Post-processing module questions, Mesh module questions, Frequently asked questions"}
+{"kind": "ref", "node": "Solver module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Solver module"}
+{"kind": "node", "node": "Post-processing module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "Post-processing module questions,  , Solver module questions, Frequently asked questions"}
+{"kind": "ref", "node": "Post-processing module questions", "relative_file": "doc/texinfo/gmsh.texi", "value": "t8"}
+{"kind": "node", "node": "Version history", "relative_file": "doc/texinfo/gmsh.texi", "value": "Version history, Copyright and credits, Frequently asked questions, Top"}
+{"kind": "cindex", "node": "Version history", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Version history", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Version history", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "verbatiminclude", "node": "Version history", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../CHANGELOG.txt"}
+{"kind": "node", "node": "Copyright and credits", "relative_file": "doc/texinfo/gmsh.texi", "value": "Copyright and credits, License, Version history, Top"}
+{"kind": "cindex", "node": "Copyright and credits", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Copyright and credits", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Copyright and credits", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Copyright and credits", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "verbatiminclude", "node": "Copyright and credits", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../CREDITS.txt"}
+{"kind": "node", "node": "License", "relative_file": "doc/texinfo/gmsh.texi", "value": "License, Concept index, Copyright and credits, Top"}
+{"kind": "cindex", "node": "License", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "verbatiminclude", "node": "License", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../LICENSE.txt"}
+{"kind": "node", "node": "Concept index", "relative_file": "doc/texinfo/gmsh.texi", "value": "Concept index, Syntax index, License, Top"}
+{"kind": "cindex", "node": "Concept index", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Concept index", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "node", "node": "Syntax index", "relative_file": "doc/texinfo/gmsh.texi", "value": "Syntax index,  , Concept index, Top"}
+{"kind": "cindex", "node": "Syntax index", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Syntax index", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
+{"kind": "cindex", "node": "Syntax index", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}

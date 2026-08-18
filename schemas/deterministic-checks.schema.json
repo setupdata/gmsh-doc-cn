@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "algorithm", "po_sha256", "checked_count", "all_passed", "structure", "units"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "algorithm": {"const": "deterministic-unit-checks-v1"},
+    "po_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "checked_count": {"type": "integer", "minimum": 0},
+    "all_passed": {"type": "boolean"},
+    "structure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "changed_kinds", "differences", "source_sha256", "translated_sha256"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "changed_kinds": {"type": "array", "items": {"type": "string"}},
+        "differences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "relative_file", "node", "expected", "actual"],
+            "properties": {
+              "kind": {"type": "string", "minLength": 1},
+              "relative_file": {"type": ["string", "null"]},
+              "node": {"type": ["string", "null"]},
+              "expected": {"type": "string"},
+              "actual": {"type": "string"}
+            }
+          }
+        },
+        "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "translated_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["unit_id", "msgctxt", "source_hash", "context_hash", "protected_hash", "candidate_hash", "checks", "result"],
+        "properties": {
+          "unit_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "msgctxt": {"type": "string", "minLength": 1},
+          "source_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "context_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "protected_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "candidate_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+          "checks": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["translation_present", "po_msgid_current", "not_fuzzy", "protected_content"],
+            "properties": {
+              "translation_present": {"type": "boolean"},
+              "po_msgid_current": {"type": "boolean"},
+              "not_fuzzy": {"type": "boolean"},
+              "protected_content": {"type": "boolean"}
+            }
+          },
+          "result": {"enum": ["pass", "fail"]}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+[rules]
+version = "1"
+language = "zh-CN"
+preserve_texinfo_commands = true
+preserve_nodes_and_anchors = true
+preserve_code_and_examples = true
+preserve_identifiers = true
+preserve_numbers_and_units = true
+max_revision_rounds = 2
+
+[style]
+locale = "zh-CN"
+punctuation = "simplified-chinese"
+faithful = true
+allow_expansion = false

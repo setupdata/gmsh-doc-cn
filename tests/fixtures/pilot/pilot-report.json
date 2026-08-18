@@ -1,0 +1,40 @@
+{
+  "benchmark_qualification_state": "qualified",
+  "benchmark_unit_count": 100,
+  "external_file_count": 31,
+  "extractor": "gmsh-doc-cn-custom-texinfo-v1",
+  "html_anchor_baseline_sha256": "c8ce300134706b3c2dd02ee4ed8aa497b71ea8fdd2fdd51c5af3ff0581f58a6c",
+  "obsolete_input_context_count": 20,
+  "pilot_unit_count": 85,
+  "po4a_admitted": false,
+  "po4a_evaluation": "tests/fixtures/pilot/po4a-evaluation.json",
+  "po4a_reason": "po4a 0.74 changed protected Texinfo tokens and structure records; the dedicated parser is the admitted path",
+  "protected_token_count": 237,
+  "round_trip": "pass",
+  "round_trip_byte_identity": true,
+  "round_trip_comparisons": [
+    {
+      "changed_kinds": [],
+      "name": "empty",
+      "passed": true
+    },
+    {
+      "changed_kinds": [],
+      "name": "current-po",
+      "passed": true
+    }
+  ],
+  "schema_version": 1,
+  "smoke_validation": "pass",
+  "structure_record_count": 538,
+  "term_candidate_count": 150,
+  "texinfo_warning_baseline_sha256": "6d28ae8b018a6d59bf6d195bdd48dd4f69e969a9b9a4066f80c9f869878e7246",
+  "tool_lock_sha256": "8bbd1265d7467c89dc6b3b89e03e7d696f60068484074ff99cbe697e1c2386b1",
+  "tool_versions": {
+    "gettext": "0.23.1-2",
+    "po4a": "0.73-2",
+    "texinfo": "7.1.1-1"
+  },
+  "unit_count": 6916,
+  "upstream_manifest_sha256": "d6c1ae6278d7e90716c7ef199ececf9d840d910bccf51529a404528aec90a8b9"
+}

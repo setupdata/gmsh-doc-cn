@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "algorithm",
+    "html_file_count",
+    "anchor_count",
+    "pages",
+    "duplicate_anchors",
+    "broken_internal_links"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "algorithm": {"const": "html-anchor-inventory-v1"},
+    "html_file_count": {"type": "integer", "minimum": 1},
+    "anchor_count": {"type": "integer", "minimum": 1},
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "anchors"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "anchors": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "duplicate_anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["page", "anchor"],
+        "properties": {
+          "page": {"type": "string", "minLength": 1},
+          "anchor": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "broken_internal_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "href", "target", "fragment", "reason"],
+        "properties": {
+          "source": {"type": "string", "minLength": 1},
+          "href": {"type": "string", "minLength": 1},
+          "target": {"type": "string", "minLength": 1},
+          "fragment": {"type": "string"},
+          "reason": {"enum": ["missing-page", "missing-fragment"]}
+        }
+      }
+    }
+  }
+}

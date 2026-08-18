@@ -1,0 +1,87 @@
+{
+  "ai_generation": {
+    "ai_calls": 7,
+    "model": "gpt-5.6-luna",
+    "prompt_hash": "49661863f0529b911b6c3784eabd577624287ba91b1efbe652796d343b63ad77",
+    "reasoning_effort": "xhigh",
+    "run_ids": [
+      "benchmark-revision-round-1",
+      "benchmark-translate-001-017",
+      "benchmark-translate-018-034",
+      "benchmark-translate-035-051",
+      "benchmark-translate-052-068",
+      "benchmark-translate-069-084",
+      "benchmark-translate-085-100"
+    ],
+    "status": "complete"
+  },
+  "algorithm_version": "sha256-stratified-v1",
+  "approval_id": "benchmark-v1-maintainer-2026-08-14",
+  "evaluation_checks": {
+    "all_references_accepted": true,
+    "initial_protected_failure_count": 5,
+    "initial_protected_failures_captured": true,
+    "initial_reference_checked": true,
+    "language_review_independent": true,
+    "protected_content_valid": true,
+    "review_records_current": true,
+    "review_records_unique": true
+  },
+  "human_approval": "approved",
+  "initial_reference_sha256": "1188b00ce617c317158c8b9ac29cb75f2c76781979dfb5c4b865fa49f4d8e28a",
+  "language_review": "accept",
+  "manifest_sha256": "d6c1ae6278d7e90716c7ef199ececf9d840d910bccf51529a404528aec90a8b9",
+  "max_revision_round": 1,
+  "pot_sha256": "48d8bc59ad451db175bf08dc64540adb65335853aae67ef980ae4d880c15d5d4",
+  "publish_eligible": false,
+  "qualification_state": "qualified",
+  "quality_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "unresolved": 0
+  },
+  "quota_plan": {
+    "api": 13,
+    "compile": 4,
+    "faq": 6,
+    "fields": 8,
+    "formats": 10,
+    "options": 10,
+    "plugins": 7,
+    "prose": 15,
+    "scripting": 12,
+    "tutorial": 15
+  },
+  "reference_sha256": "0a79d73e5e2cd115a96302e5e445e4b5d58279b9efe2e1fc4d8aa1e24655374b",
+  "report_kind": "benchmark_qualification",
+  "review_evidence_sha256": "46fd5c6e3d3681b554739245cc7ac68fa4547c319c887a597fdc496c1b886412",
+  "review_manifest_sha256": "a3d4fb1ae652509a7290032d1a231d05afc2113cf492faf514f150488e0a5a5c",
+  "review_record_count": 396,
+  "revision_count": 32,
+  "schema_version": 1,
+  "seed": "gmsh-4.15.2-benchmark-v1",
+  "selected_count": 100,
+  "selected_counts": {
+    "api": 13,
+    "compile": 4,
+    "faq": 6,
+    "fields": 8,
+    "formats": 10,
+    "options": 10,
+    "plugins": 7,
+    "prose": 15,
+    "scripting": 12,
+    "tutorial": 15
+  },
+  "selection_checks": {
+    "duplicate_free": true,
+    "protected_hash_valid": true,
+    "quota_exact": true,
+    "selection_eligible": true,
+    "structure_valid": true,
+    "unit_id_unique": true
+  },
+  "technical_review": "accept",
+  "upstream_version": "4.15.2"
+}

@@ -1,0 +1,60 @@
+[pilot]
+version = "1"
+upstream_version = "4.15.2"
+nodes = [
+  "Overview of Gmsh",
+  "Geometry module",
+  "Mesh module",
+  "Solver module",
+  "Post-processing module",
+  "What Gmsh is pretty good at",
+  "and what Gmsh is not so good at",
+  "Installing and running Gmsh on your computer",
+  "t1",
+  "t2",
+  "t3",
+]
+api_keys = [
+  "gmsh/initialize",
+  "gmsh/finalize",
+  "gmsh/open",
+  "gmsh/write",
+  "gmsh/model/add",
+  "gmsh/model/getEntities",
+  "gmsh/model/getBoundary",
+  "gmsh/model/mesh/generate",
+  "gmsh/model/mesh/getNodes",
+  "gmsh/model/mesh/getElements",
+]
+source_files = [
+  "doc/texinfo/gmsh.texi",
+  "doc/texinfo/api.texi",
+]
+code_files = [
+  "tutorials/t1.geo",
+  "tutorials/t2.geo",
+  "tutorials/t3.geo",
+]
+image_files = [
+  "doc/texinfo/images/t1.png",
+  "doc/texinfo/images/t2.png",
+  "doc/texinfo/images/t3.png",
+]
+include_closure = [
+  "doc/texinfo/api.texi",
+  "doc/texinfo/cmake_options.texi",
+  "doc/texinfo/commandline.texi",
+  "doc/texinfo/fields.texi",
+  "doc/texinfo/gmsh.texi",
+  "doc/texinfo/mouse.texi",
+  "doc/texinfo/opt_general.texi",
+  "doc/texinfo/opt_geometry.texi",
+  "doc/texinfo/opt_mesh.texi",
+  "doc/texinfo/opt_post.texi",
+  "doc/texinfo/opt_print.texi",
+  "doc/texinfo/opt_solver.texi",
+  "doc/texinfo/opt_view.texi",
+  "doc/texinfo/plugins.texi",
+  "doc/texinfo/shortcuts.texi",
+  "doc/texinfo/version.texi",
+]
