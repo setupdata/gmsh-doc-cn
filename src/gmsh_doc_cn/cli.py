@@ -56,6 +56,22 @@ def _json_object(path: Path) -> dict[str, object]:
     return value
 
 
+def _selected_check_units(
+    args: argparse.Namespace, *, all_unit_ids: list[str] | None = None
+) -> list[str]:
+    selected = set(args.check_unit)
+    if args.check_all:
+        if all_unit_ids is None:
+            all_unit_ids = [
+                unit.unit_id for unit in extract_tree(Path(args.source)).units
+            ]
+        selected.update(all_unit_ids)
+    check_units = sorted(selected, key=lambda value: value.encode("utf-8"))
+    if not check_units:
+        raise ValueError("requires --check-all or at least one --check-unit")
+    return check_units
+
+
 def _preview_settings(args: argparse.Namespace) -> dict[str, object]:
     manifest_path = Path(args.manifest)
     site_path = Path(args.site_config)
@@ -68,9 +84,7 @@ def _preview_settings(args: argparse.Namespace) -> dict[str, object]:
     glossary_path = Path(args.glossary)
     review_directory = Path(args.reviews)
     review_manifest_path = Path(args.review_manifest)
-    check_units = sorted(set(args.check_unit), key=lambda value: value.encode("utf-8"))
-    if not check_units:
-        raise ValueError("preview build requires at least one --check-unit")
+    check_units = _selected_check_units(args)
     manifest = _manifest(manifest_path)
     site = _toml_table(site_path, "site")
     release = _toml_table(release_path, "release")
@@ -278,7 +292,10 @@ def command_status(args: argparse.Namespace) -> None:
     po = read_po_catalog(po_path)
     catalog = po.translations
     reviews = read_review_batches(Path(args.reviews), Path(args.review_manifest))
-    checks_report = run_deterministic_checks(source, po_path, args.check_unit)
+    check_units = _selected_check_units(
+        args, all_unit_ids=[unit.unit_id for unit in extraction.units]
+    )
+    checks_report = run_deterministic_checks(source, po_path, check_units)
     if args.checks_output:
         write_deterministic_checks(checks_report, Path(args.checks_output))
     checks = check_result_map(checks_report)
@@ -499,7 +516,8 @@ def parser() -> argparse.ArgumentParser:
     preview.add_argument("--status-schema", default="schemas/status.schema.json")
     preview.add_argument("--reviews", default="reviews/v4.15.2")
     preview.add_argument("--review-manifest", default="reviews/v4.15.2/batches.json")
-    preview.add_argument("--check-unit", action="append", required=True)
+    preview.add_argument("--check-unit", action="append", default=[])
+    preview.add_argument("--check-all", action="store_true")
     preview.add_argument("--rules", default="config/translation-rules.toml")
     preview.add_argument("--glossary", default="glossary/terms.csv")
     preview.add_argument("--tool-versions", default="container/tool-versions.lock")
@@ -524,6 +542,7 @@ def parser() -> argparse.ArgumentParser:
     status.add_argument("--reviews", default="reviews/v4.15.2")
     status.add_argument("--review-manifest", default="reviews/v4.15.2/batches.json")
     status.add_argument("--check-unit", action="append", default=[])
+    status.add_argument("--check-all", action="store_true")
     status.add_argument("--checks-output")
     status.add_argument("--rules", default="config/translation-rules.toml")
     status.add_argument("--glossary", default="glossary/terms.csv")
@@ -563,7 +582,8 @@ def parser() -> argparse.ArgumentParser:
     reproducible_preview.add_argument(
         "--review-manifest", default="reviews/v4.15.2/batches.json"
     )
-    reproducible_preview.add_argument("--check-unit", action="append", required=True)
+    reproducible_preview.add_argument("--check-unit", action="append", default=[])
+    reproducible_preview.add_argument("--check-all", action="store_true")
     reproducible_preview.add_argument("--rules", default="config/translation-rules.toml")
     reproducible_preview.add_argument("--glossary", default="glossary/terms.csv")
     reproducible_preview.add_argument("--tool-versions", default="container/tool-versions.lock")

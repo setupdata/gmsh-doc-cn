@@ -60,7 +60,7 @@
     "preview_html_file_count": {"type": "integer", "minimum": 1},
     "noindex_nofollow_page_count": {"type": "integer", "minimum": 1},
     "visible_preview_marker_page_count": {"type": "integer", "minimum": 1},
-    "english_fallback_marker_page_count": {"type": "integer", "minimum": 1},
+    "english_fallback_marker_page_count": {"type": "integer", "minimum": 0},
     "english_anchor_count": {"type": "integer", "minimum": 1},
     "preview_anchor_count": {"type": "integer", "minimum": 1},
     "missing_english_anchor_count": {"const": 0},

@@ -120,100 +120,100 @@
 {"kind": "pxref", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh application\nprogramming interface"}
 {"kind": "pxref", "node": "Gmsh tutorial", "relative_file": "doc/texinfo/gmsh.texi", "value": "Installing and running Gmsh on your\ncomputer"}
 {"kind": "node", "node": "t1", "relative_file": "doc/texinfo/gmsh.texi", "value": "t1, t2, Gmsh tutorial, Gmsh tutorial"}
-{"kind": "image", "node": "t1", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t1,9cm,,Screenshot of tutorial t1"}
+{"kind": "image", "node": "t1", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t1,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t1", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t1.geo"}
 {"kind": "node", "node": "t2", "relative_file": "doc/texinfo/gmsh.texi", "value": "t2, t3, t1, Gmsh tutorial"}
-{"kind": "image", "node": "t2", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t2,9cm,,Screenshot of tutorial t2"}
+{"kind": "image", "node": "t2", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t2,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t2", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t2.geo"}
 {"kind": "node", "node": "t3", "relative_file": "doc/texinfo/gmsh.texi", "value": "t3, t4, t2, Gmsh tutorial"}
-{"kind": "image", "node": "t3", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t3,9cm,,Screenshot of tutorial t3"}
+{"kind": "image", "node": "t3", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t3,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t3", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t3.geo"}
 {"kind": "node", "node": "t4", "relative_file": "doc/texinfo/gmsh.texi", "value": "t4, t5, t3, Gmsh tutorial"}
-{"kind": "image", "node": "t4", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t4,9cm,,Screenshot of tutorial t4"}
+{"kind": "image", "node": "t4", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t4,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t4", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t4.geo"}
 {"kind": "node", "node": "t5", "relative_file": "doc/texinfo/gmsh.texi", "value": "t5, t6, t4, Gmsh tutorial"}
-{"kind": "image", "node": "t5", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t5,9cm,,Screenshot of tutorial t5"}
+{"kind": "image", "node": "t5", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t5,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t5", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t5.geo"}
 {"kind": "node", "node": "t6", "relative_file": "doc/texinfo/gmsh.texi", "value": "t6, t7, t5, Gmsh tutorial"}
-{"kind": "image", "node": "t6", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t6,9cm,,Screenshot of tutorial t6"}
+{"kind": "image", "node": "t6", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t6,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t6", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t6.geo"}
 {"kind": "node", "node": "t7", "relative_file": "doc/texinfo/gmsh.texi", "value": "t7, t8, t6, Gmsh tutorial"}
-{"kind": "image", "node": "t7", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t7,9cm,,Screenshot of tutorial t7"}
+{"kind": "image", "node": "t7", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t7,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t7", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t7.geo"}
 {"kind": "node", "node": "t8", "relative_file": "doc/texinfo/gmsh.texi", "value": "t8, t9, t7, Gmsh tutorial"}
-{"kind": "image", "node": "t8", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t8,9cm,,Screenshot of tutorial t8"}
+{"kind": "image", "node": "t8", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t8,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t8", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t8.geo"}
 {"kind": "node", "node": "t9", "relative_file": "doc/texinfo/gmsh.texi", "value": "t9, t10, t8, Gmsh tutorial"}
-{"kind": "image", "node": "t9", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t9,9cm,,Screenshot of tutorial t9"}
+{"kind": "image", "node": "t9", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t9,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t9", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t9.geo"}
 {"kind": "node", "node": "t10", "relative_file": "doc/texinfo/gmsh.texi", "value": "t10, t11, t9, Gmsh tutorial"}
-{"kind": "image", "node": "t10", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t10,9cm,,Screenshot of tutorial t10"}
+{"kind": "image", "node": "t10", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t10,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t10", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t10.geo"}
 {"kind": "node", "node": "t11", "relative_file": "doc/texinfo/gmsh.texi", "value": "t11, t12, t10, Gmsh tutorial"}
-{"kind": "image", "node": "t11", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t11,9cm,,Screenshot of tutorial t11"}
+{"kind": "image", "node": "t11", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t11,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t11", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t11.geo"}
 {"kind": "node", "node": "t12", "relative_file": "doc/texinfo/gmsh.texi", "value": "t12, t13, t11, Gmsh tutorial"}
-{"kind": "image", "node": "t12", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t12,9cm,,Screenshot of tutorial t12"}
+{"kind": "image", "node": "t12", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t12,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t12", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t12.geo"}
 {"kind": "node", "node": "t13", "relative_file": "doc/texinfo/gmsh.texi", "value": "t13, t14, t12, Gmsh tutorial"}
-{"kind": "image", "node": "t13", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t13,9cm,,Screenshot of tutorial t13"}
+{"kind": "image", "node": "t13", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t13,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t13", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t13.geo"}
 {"kind": "node", "node": "t14", "relative_file": "doc/texinfo/gmsh.texi", "value": "t14, t15, t13, Gmsh tutorial"}
-{"kind": "image", "node": "t14", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t14,9cm,,Screenshot of tutorial t14"}
+{"kind": "image", "node": "t14", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t14,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t14", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t14.geo"}
 {"kind": "node", "node": "t15", "relative_file": "doc/texinfo/gmsh.texi", "value": "t15, t16, t14, Gmsh tutorial"}
-{"kind": "image", "node": "t15", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t15,9cm,,Screenshot of tutorial t15"}
+{"kind": "image", "node": "t15", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t15,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t15", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t15.geo"}
 {"kind": "node", "node": "t16", "relative_file": "doc/texinfo/gmsh.texi", "value": "t16, t17, t15, Gmsh tutorial"}
-{"kind": "image", "node": "t16", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t16,9cm,,Screenshot of tutorial t16"}
+{"kind": "image", "node": "t16", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t16,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t16", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t16.geo"}
 {"kind": "node", "node": "t17", "relative_file": "doc/texinfo/gmsh.texi", "value": "t17, t18, t16, Gmsh tutorial"}
-{"kind": "image", "node": "t17", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t17,9cm,,Screenshot of tutorial t17"}
+{"kind": "image", "node": "t17", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t17,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t17", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t17.geo"}
 {"kind": "node", "node": "t18", "relative_file": "doc/texinfo/gmsh.texi", "value": "t18, t19, t17, Gmsh tutorial"}
-{"kind": "image", "node": "t18", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t18,9cm,,Screenshot of tutorial t18"}
+{"kind": "image", "node": "t18", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t18,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t18", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t18.geo"}
 {"kind": "node", "node": "t19", "relative_file": "doc/texinfo/gmsh.texi", "value": "t19, t20, t18, Gmsh tutorial"}
-{"kind": "image", "node": "t19", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t19,9cm,,Screenshot of tutorial t19"}
+{"kind": "image", "node": "t19", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t19,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t19", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t19.geo"}
 {"kind": "node", "node": "t20", "relative_file": "doc/texinfo/gmsh.texi", "value": "t20, t21, t19, Gmsh tutorial"}
-{"kind": "image", "node": "t20", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t20,9cm,,Screenshot of tutorial t20"}
+{"kind": "image", "node": "t20", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t20,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t20", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t20.geo"}
 {"kind": "node", "node": "t21", "relative_file": "doc/texinfo/gmsh.texi", "value": "t21, x1, t20, Gmsh tutorial"}
-{"kind": "image", "node": "t21", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t21,9cm,,Screenshot of tutorial t21"}
+{"kind": "image", "node": "t21", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/t21,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "t21", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/t21.geo"}
 {"kind": "node", "node": "x1", "relative_file": "doc/texinfo/gmsh.texi", "value": "x1, x2, t21, Gmsh tutorial"}
-{"kind": "image", "node": "x1", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x1,9cm,,Screenshot of tutorial x1"}
+{"kind": "image", "node": "x1", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x1,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "x1", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x1.py"}
 {"kind": "node", "node": "x2", "relative_file": "doc/texinfo/gmsh.texi", "value": "x2, x3, x1, Gmsh tutorial"}
-{"kind": "image", "node": "x2", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x2,9cm,,Screenshot of tutorial x2"}
+{"kind": "image", "node": "x2", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x2,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "x2", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x2.py"}
 {"kind": "node", "node": "x3", "relative_file": "doc/texinfo/gmsh.texi", "value": "x3, x4, x2, Gmsh tutorial"}
-{"kind": "image", "node": "x3", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x3,9cm,,Screenshot of tutorial x3"}
+{"kind": "image", "node": "x3", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x3,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "x3", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x3.py"}
 {"kind": "node", "node": "x4", "relative_file": "doc/texinfo/gmsh.texi", "value": "x4, x5, x3, Gmsh tutorial"}
-{"kind": "image", "node": "x4", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x4,9cm,,Screenshot of tutorial x4"}
+{"kind": "image", "node": "x4", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x4,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "x4", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x4.py"}
 {"kind": "node", "node": "x5", "relative_file": "doc/texinfo/gmsh.texi", "value": "x5, x6, x4, Gmsh tutorial"}
-{"kind": "image", "node": "x5", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x5,9cm,,Screenshot of tutorial x5"}
+{"kind": "image", "node": "x5", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x5,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "x5", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x5.py"}
 {"kind": "node", "node": "x6", "relative_file": "doc/texinfo/gmsh.texi", "value": "x6, x7, x5, Gmsh tutorial"}
 {"kind": "verbatiminclude", "node": "x6", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x6.py"}
 {"kind": "node", "node": "x7", "relative_file": "doc/texinfo/gmsh.texi", "value": "x7,  , x6, Gmsh tutorial"}
-{"kind": "image", "node": "x7", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x7,9cm,,Screenshot of tutorial x7"}
+{"kind": "image", "node": "x7", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/x7,9cm,,<translatable-image-alt>"}
 {"kind": "verbatiminclude", "node": "x7", "relative_file": "doc/texinfo/gmsh.texi", "value": "../../tutorials/python/x7.py"}
 {"kind": "node", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh graphical user interface, Gmsh command-line interface, Gmsh tutorial, Top"}
 {"kind": "cindex", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
 {"kind": "cindex", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "<translatable-index-term>"}
 {"kind": "pxref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Installing and\nrunning Gmsh on your computer"}
 {"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options"}
-{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui,10.5cm,,Gmsh's graphical user interface (GUI)"}
-{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui_add_rectangle,10.5cm,,Adding a rectangle in the GUI"}
+{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui,10.5cm,,<translatable-image-alt>"}
+{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui_add_rectangle,10.5cm,,<translatable-image-alt>"}
 {"kind": "pxref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "General options"}
 {"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh scripting language"}
 {"kind": "pxref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh tutorial"}
 {"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Keyboard shortcuts"}
-{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui_mesh,10.5cm,,Meshing in the GUI"}
+{"kind": "image", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "images/gui_mesh,10.5cm,,<translatable-image-alt>"}
 {"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "t1"}
 {"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Gmsh\noptions"}
 {"kind": "ref", "node": "Gmsh graphical user interface", "relative_file": "doc/texinfo/gmsh.texi", "value": "Namespace gmsh/fltk"}

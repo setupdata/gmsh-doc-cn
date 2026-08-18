@@ -7,6 +7,7 @@ from pathlib import Path
 from gmsh_doc_cn.catalog import (
     apply_catalog,
     extract_tree,
+    protected_values,
     read_po,
     read_po_catalog,
     write_po,
@@ -16,6 +17,13 @@ from gmsh_doc_cn.structure import compare_structures, scan_structure
 
 
 class CatalogTests(unittest.TestCase):
+    def test_protects_long_options_but_not_texinfo_em_dash_text(self) -> None:
+        self.assertEqual(protected_values("Use --verbose when needed."), ("--verbose",))
+        self.assertEqual(
+            protected_values("material properties---this is a job for the solver"),
+            (),
+        )
+
     def test_reads_fuzzy_and_obsolete_gettext_state(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "sample.po"

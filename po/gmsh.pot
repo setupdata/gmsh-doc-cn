@@ -27281,7 +27281,7 @@ msgid "To load an existing model instead of creating a model from scratch, use\n
 msgstr ""
 
 #. unit_id: cb0c398e5f884499c770f31f2e22fcaad6de38ee13d6344b6359a68562102095
-#. source_hash: a4fe9db215437b7567101380ad1a2aa47ab79fbe65000fc5d036ccb7645f4a69
+#. source_hash: ae28844072c91b0aad7577fa28b726d44a7ba511e585daafe19d2429ab6b6a40
 #: doc/texinfo/gmsh.texi
 msgctxt "doc/texinfo/gmsh.texi|Gmsh graphical user interface|paragraph|6e67babc2343f72316b7c3a4dd006ea8d4b6ad445b4d056fbb945fa54c1552e3"
 msgid "To generate a mesh, open `Mesh' in the tree menu and choose the desired\ndimension: `1D' will mesh all the curves; `2D' will mesh all the\nsurfaces---as well as all the curves if `1D' was not called before; `3D'\nwill mesh all the volumes---and all the surfaces if `2D' was not called\nbefore. To save the resulting mesh in the current mesh format click on\n`Save' in the tree menu, or select the appropriate format and file name\nwith the `File->Export' menu. The default mesh file name is based on the\nname of the current active model, with an appended extension depending\non the mesh format.  Note that most interactive commands have keyboard\nshortcuts: see @ref{Keyboard shortcuts}, or select `Help->Keyboard and\nMouse Usage' in the menu. For example, to quickly generate the 2D mesh\nand save a mesh, you can first press @kbd{2}, then @kbd{Ctrl+Shift+s}."
@@ -31663,7 +31663,7 @@ msgid "Transfinite Curve @{ @var{expression-list-or-all} @} = @var{expression} <
 msgstr ""
 
 #. unit_id: 619a12dc132fa33bcfb35256b4aab007a7d0e2d4c88724591e9312813d7cdc95
-#. source_hash: 86b85714e44c243fd58a9ba7fefcd76fdeeb0fe5dc40a42ad5ecef35068cb075
+#. source_hash: 0fe6b79602f618810aeb83a7ffb4b83bb48042c9ddba5ba611ee4a8eac90ab99
 #: doc/texinfo/gmsh.texi
 msgctxt "doc/texinfo/gmsh.texi|Structured grids|paragraph|Transfinite Curve @{ @var{expression-list-or-all} @} = @var{expression} < Using Progression | Bump @var{expression} >;"
 msgid "Select the curves in @var{expression-list} to be meshed with the 1D\ntransfinite algorithm. The @var{expression} on the right hand side gives\nthe number of nodes that will be created on the curve (this overrides\nany other mesh element size prescription---see @ref{Specifying mesh\nelement sizes}). The optional argument `@code{Using Progression\n@var{expression}}' instructs the transfinite algorithm to distribute the\nnodes following a geometric progression (@code{Progression 2} meaning\nfor example that each line element in the series will be twice as long\nas the preceding one). The optional argument `@code{Using Bump\n@var{expression}}' instructs the transfinite algorithm to distribute the\nnodes with a refinement at both ends of the curve. @value{SYNC}"
@@ -35471,7 +35471,7 @@ msgid "How do I define boundary conditions or material properties in Gmsh?"
 msgstr ""
 
 #. unit_id: b1bc284eb4f533d71e52d290a4e245f4cbc7a7839fe82280cb164d972908171b
-#. source_hash: c2c08c01c0efb1625040a187fb5f62cdc40e127f55c666fe4a849ff3bd0439fc
+#. source_hash: 73aa4c543720f07b3017261cb3e355f59421257f5055e9137a7737aa2a05ad0f
 #: doc/texinfo/gmsh.texi
 msgctxt "doc/texinfo/gmsh.texi|Mesh module questions|paragraph|How do I define boundary conditions or material properties in Gmsh?"
 msgid "By design, Gmsh does not try to incorporate every possible definition of\nboundary conditions or material properties---this is a job best left to\nthe solver. Instead, Gmsh provides a simple mechanism to tag groups of\nelements, and it is up to the solver to interpret these tags as boundary\nconditions, materials, etc. Associating tags with elements in Gmsh is\ndone by defining physical groups (Physical Points, Physical Curves,\nPhysical Surfaces and Physical Volumes). See the reference manual as\nwell as the tutorials (in particular @ref{t1}) for a detailed\ndescription and some examples."

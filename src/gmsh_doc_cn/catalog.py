@@ -115,7 +115,7 @@ _PLAIN_PROTECTED_RE = re.compile(
     r"https?://[^\s,)}]+"
     r"|\b(?:gmsh(?:[/.:][A-Za-z0-9_./:-]+)+)\b"
     r"|\b(?:General|Geometry|Mesh|Solver|PostProcessing|Print|View)\.[A-Za-z0-9_.]+\b"
-    r"|(?<![\w])--[A-Za-z][A-Za-z0-9-]*"
+    r"|(?<![\w-])--[A-Za-z][A-Za-z0-9-]*"
     r"|(?<![\w])-[A-Za-z][A-Za-z0-9-]*(?=\s+(?:value|int|float|string|file|list)\b)"
     r"|\b\d+(?:\.\d+)*(?:[eE][+-]?\d+)?\s?(?:%|mm|cm|km|ms|kHz|MHz|GB|MB|KB|bytes?|bits?|rad|deg|Hz)\b"
     r"|\b\d+(?:\.\d+)*(?:[eE][+-]?\d+)?\b"
@@ -721,7 +721,7 @@ def write_po(
     if language:
         header.extend(
             [
-                "PO-Revision-Date: 2026-08-13 00:00+0000\n",
+                "PO-Revision-Date: 2026-08-18 00:00+0000\n",
                 "Last-Translator: Gmsh Chinese Documentation Project\n",
                 "Language-Team: Chinese (Simplified)\n",
                 f"Language: {language}\n",

@@ -33,7 +33,7 @@ from .catalog import (
 from .pilot import select_pilot_units, validate_pilot_files, validate_pilot_manifest
 from .review import read_review_batches, review_evidence_sha256
 from .semantic_rules import semantic_rule_hashes
-from .structure import compare_structures, scan_structure
+from .structure import compare_structures, mask_external_file_content, scan_structure
 from .terminology import (
     apply_term_decisions,
     load_term_decisions,
@@ -191,6 +191,7 @@ def generate_baseline(
     )
 
     round_trip_comparisons: list[dict[str, object]] = []
+    external_paths = {item.relative_file for item in structure.external_files}
     with tempfile.TemporaryDirectory() as directory:
         for name, round_trip_catalog in (
             ("empty", {}),
@@ -205,7 +206,18 @@ def generate_baseline(
         ):
             translated_root = Path(directory) / name
             apply_catalog(source_root, translated_root, units, round_trip_catalog)
-            comparison = compare_structures(structure, scan_structure(translated_root))
+            translated_external_files = {
+                unit.relative_file
+                for unit in units
+                if unit.relative_file in external_paths
+                and unit.msgctxt in round_trip_catalog
+            }
+            comparison = compare_structures(
+                mask_external_file_content(structure, translated_external_files),
+                mask_external_file_content(
+                    scan_structure(translated_root), translated_external_files
+                ),
+            )
             round_trip_comparisons.append(
                 {
                     "name": name,

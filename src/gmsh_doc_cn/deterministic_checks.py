@@ -17,7 +17,7 @@ from .catalog import (
     read_po_catalog,
 )
 from .status import candidate_hash
-from .structure import compare_structures, scan_structure
+from .structure import compare_structures, mask_external_file_content, scan_structure
 
 
 def _file_sha256(path: Path) -> str:
@@ -107,17 +107,30 @@ def run_deterministic_checks(
         )
 
     source_structure = scan_structure(source_root)
+    external_paths = {item.relative_file for item in source_structure.external_files}
+    translated_external_files = {
+        by_id[unit_id].relative_file
+        for unit_id in selected_ids
+        if by_id[unit_id].relative_file in external_paths
+        and by_id[unit_id].msgctxt in selected_catalog
+    }
+    comparison_source = mask_external_file_content(
+        source_structure, translated_external_files
+    )
     with tempfile.TemporaryDirectory() as directory:
         translated_root = Path(directory) / "translated"
         apply_catalog(source_root, translated_root, units, selected_catalog)
         translated_structure = scan_structure(translated_root)
-    comparison = compare_structures(source_structure, translated_structure)
+    comparison_translated = mask_external_file_content(
+        translated_structure, translated_external_files
+    )
+    comparison = compare_structures(comparison_source, comparison_translated)
     structure = {
         "passed": comparison.passed,
         "changed_kinds": list(comparison.changed_kinds),
         "differences": list(comparison.differences),
-        "source_sha256": _snapshot_sha256(source_structure),
-        "translated_sha256": _snapshot_sha256(translated_structure),
+        "source_sha256": _snapshot_sha256(comparison_source),
+        "translated_sha256": _snapshot_sha256(comparison_translated),
     }
     for row in rows:
         row["result"] = (

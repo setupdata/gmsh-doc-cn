@@ -5,12 +5,14 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from collections.abc import Iterable
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
 
 _TRANSLATABLE_INDEX_KINDS = {"cindex", "findex", "vindex", "kindex", "pindex", "tindex"}
 _INDEX_VALUE_PLACEHOLDER = "<translatable-index-term>"
+_IMAGE_ALT_PLACEHOLDER = "<translatable-image-alt>"
 
 
 def _sha256(path: Path) -> str:
@@ -52,6 +54,23 @@ class StructureComparison:
     differences: tuple[dict[str, str | None], ...]
 
 
+def mask_external_file_content(
+    snapshot: StructureSnapshot, relative_files: Iterable[str]
+) -> StructureSnapshot:
+    """Retain included-file identity while ignoring translated text bytes."""
+
+    translated = {str(value) for value in relative_files}
+    return StructureSnapshot(
+        snapshot.records,
+        tuple(
+            ExternalFile(item.relative_file, "0" * 64, 0)
+            if item.relative_file in translated
+            else item
+            for item in snapshot.external_files
+        ),
+    )
+
+
 def scan_structure(source_root: Path) -> StructureSnapshot:
     source_root = Path(source_root).resolve()
     texinfo_root = source_root / "doc" / "texinfo"
@@ -85,6 +104,13 @@ def scan_structure(source_root: Path) -> StructureSnapshot:
                 # The command, file, node and position are structural. Its text is a
                 # translation unit and is checked through PO identity and candidate hashes.
                 value = _INDEX_VALUE_PLACEHOLDER
+            elif kind == "image":
+                # Texinfo's fourth @image argument is alternative text. It is
+                # translatable; the file, dimensions and optional extension are not.
+                parts = value.split(",", 4)
+                if len(parts) >= 4:
+                    parts[3] = _IMAGE_ALT_PLACEHOLDER
+                    value = ",".join(parts)
             records.append(StructureRecord(kind, relative, node, value))
             if kind == "verbatiminclude":
                 external_paths.add((path.parent / value).resolve())

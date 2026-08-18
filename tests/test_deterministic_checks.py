@@ -118,6 +118,39 @@ class DeterministicCheckTests(unittest.TestCase):
             self.assertTrue(report["all_passed"])
             self.assertTrue(report["structure"]["passed"])
 
+    def test_translated_verbatim_include_bytes_do_not_count_as_structure_changes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source"
+            texinfo = source / "doc" / "texinfo"
+            texinfo.mkdir(parents=True)
+            (texinfo / "gmsh.texi").write_text(
+                "@node Top\n@chapter Manual\n@verbatiminclude ../../CHANGELOG.txt\n",
+                encoding="utf-8",
+            )
+            (source / "CHANGELOG.txt").write_text(
+                "1.0: fixed bugs.\n",
+                encoding="utf-8",
+            )
+            units = extract_tree(source).units
+            unit = next(item for item in units if item.relative_file == "CHANGELOG.txt")
+            po = root / "zh_CN.po"
+            write_po(
+                units,
+                po,
+                language="zh_CN",
+                translations={unit.msgctxt: "1.0：修复错误。"},
+            )
+
+            report = run_deterministic_checks(source, po, [unit.unit_id])
+
+            self.assertTrue(report["all_passed"])
+            self.assertTrue(report["structure"]["passed"])
+            self.assertEqual(
+                report["structure"]["source_sha256"],
+                report["structure"]["translated_sha256"],
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -529,6 +529,7 @@ def _decorate_preview_pages(
     upstream_commit: str,
     translation_revision: str,
     translation_date: str,
+    has_english_fallback: bool,
 ) -> tuple[int, tuple[str, ...]]:
     site_base = _normalise_site_base(site_base)
     version = _validate_version(version)
@@ -546,7 +547,10 @@ def _decorate_preview_pages(
         if _ROBOTS_META_RE.search(text):
             raise ValueError(f"upstream HTML already contains robots metadata: {relative}")
         text = _localize_texinfo_chrome(text)
-        text = _add_tag_attribute(text, "html", "data-translation-state", "mixed")
+        translation_state = "mixed" if has_english_fallback else "complete"
+        text = _add_tag_attribute(
+            text, "html", "data-translation-state", translation_state
+        )
         text = _add_tag_attribute(text, "html", "data-release-channel", "preview")
         english_url = (
             f"{site_base}v{quote(version, safe='._-')}/en/"
@@ -575,14 +579,19 @@ def _decorate_preview_pages(
         body = re.search(r"<body\b[^>]*>", text, re.IGNORECASE)
         if body is None:
             raise ValueError(f"generated HTML is missing <body>: {relative}")
+        state_notice = (
+            '<span class="english-fallback-marker">英文回退</span>：'
+            "尚未达到正式状态的内容显示固定上游英文。"
+            if has_english_fallback
+            else "全部可翻译内容均已通过审校和自动检查。"
+        )
         banner = (
             '\n<aside class="translation-preview" role="note" '
-            'data-translation-state="mixed">\n'
+            f'data-translation-state="{translation_state}">\n'
             "<p><strong>非官方简体中文预览</strong> · "
             f"Gmsh {html.escape(version)} · {html.escape(translation_revision)} · "
             f"{html.escape(translation_date)}</p>\n"
-            '<p><span class="english-fallback-marker">英文回退</span>：'
-            "尚未达到正式状态的内容显示固定上游英文。"
+            f"<p>{state_notice}"
             f'<a href="{english_url}">查看对应英文页面</a>。'
             f"上游来源：{html.escape(upstream_tag)} "
             f"({html.escape(upstream_commit)}).</p>\n"
@@ -594,13 +603,16 @@ def _decorate_preview_pages(
         rendered = path.read_text(encoding="utf-8")
         required = (
             'lang="zh-CN"',
-            'data-translation-state="mixed"',
+            f'data-translation-state="{translation_state}"',
             'data-release-channel="preview"',
             '<meta name="robots" content="noindex,nofollow">',
             f'<link rel="canonical" href="{preview_url}">',
             'class="translation-preview"',
-            'class="english-fallback-marker">英文回退</span>',
         )
+        if has_english_fallback:
+            required += ('class="english-fallback-marker">英文回退</span>',)
+        elif 'class="english-fallback-marker">英文回退</span>' in rendered:
+            raise ValueError(f"complete preview unexpectedly claims English fallback: {relative}")
         if any(value not in rendered for value in required):
             raise ValueError(f"preview metadata verification failed: {relative}")
     return len(html_paths), tuple(relative_paths)
@@ -654,6 +666,9 @@ def build_preview_site(
         glossary_hash=sha256_file(glossary_path),
         semantic_rules_hashes=per_unit_rules,
     )
+    unit_count = len(extraction.units)
+    formal_count = len(formal_catalog)
+    has_english_fallback = formal_count < unit_count
     staged_catalog = _mark_formal_references(extraction.units, formal_catalog)
     english_root = dist_root / f"v{version}" / "en"
     preview_root = dist_root / "preview" / f"v{version}" / "zh-cn"
@@ -685,6 +700,7 @@ def build_preview_site(
         upstream_commit=upstream_commit,
         translation_revision=translation_revision,
         translation_date=translation_date,
+        has_english_fallback=has_english_fallback,
     )
     english_paths = tuple(
         path.relative_to(english_root).as_posix()
@@ -755,8 +771,6 @@ def build_preview_site(
     )
     site_absolute_link_count = english_site_link_count + preview_site_link_count
     resource_link_count = english_resource_link_count + preview_resource_link_count
-    unit_count = len(extraction.units)
-    formal_count = len(formal_catalog)
     return PreviewBuildResult(
         dist_root=dist_root,
         english_root=english_root,
@@ -768,7 +782,7 @@ def build_preview_site(
         preview_html_file_count=preview_count,
         noindex_nofollow_page_count=preview_count,
         visible_preview_marker_page_count=preview_count,
-        english_fallback_marker_page_count=preview_count,
+        english_fallback_marker_page_count=(preview_count if has_english_fallback else 0),
         english_anchor_count=int(english_inventory["anchor_count"]),
         preview_anchor_count=int(preview_inventory["anchor_count"]),
         missing_english_anchor_count=len(missing_english_anchors),
@@ -809,10 +823,14 @@ def preview_build_report(
         result.preview_html_file_count,
         result.noindex_nofollow_page_count,
         result.visible_preview_marker_page_count,
-        result.english_fallback_marker_page_count,
     }
     if len(page_counts) != 1:
         raise ValueError("preview page-boundary counts are inconsistent")
+    expected_fallback_pages = (
+        result.preview_html_file_count if result.fallback_unit_count else 0
+    )
+    if result.english_fallback_marker_page_count != expected_fallback_pages:
+        raise ValueError("preview English-fallback marker count is inconsistent")
     if result.missing_english_anchor_count != 0:
         raise ValueError("preview report cannot contain missing English anchors")
     files = artifact_manifest.get("files")

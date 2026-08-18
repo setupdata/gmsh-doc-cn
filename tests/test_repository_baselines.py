@@ -138,7 +138,11 @@ class RepositoryBaselineTests(unittest.TestCase):
         production_reviews = read_review_batches(
             ROOT / "reviews/v4.15.2", ROOT / "reviews/v4.15.2/batches.json"
         )
-        self.assertEqual(len(production_reviews), 48)
+        self.assertEqual(len(production_reviews), 21087)
+        self.assertEqual(
+            sum(record["batch"] == "production-v1" for record in production_reviews),
+            21039,
+        )
         overview = [
             record for record in production_reviews if record["batch"] == "overview-of-gmsh-v1"
         ]
@@ -258,7 +262,7 @@ class RepositoryBaselineTests(unittest.TestCase):
         self.assertTrue(all(len(record["rules_hash"]) == 64 for record in records))
         self.assertEqual(records[0]["glossary_hash"], sha256(ROOT / "glossary/terms.csv"))
 
-    def test_real_formal_smoke_reduces_against_the_fixed_release(self) -> None:
+    def test_full_catalog_reduces_against_the_fixed_release(self) -> None:
         source = Path(
             os.environ.get(
                 "GMSH_SOURCE_ROOT",
@@ -281,14 +285,7 @@ class RepositoryBaselineTests(unittest.TestCase):
         )
         for record in records:
             self.assertEqual(record["rules_hash"], per_unit_rules[record["unit_id"]])
-        formal_units = [
-            "bd4e60b69841c3c518ba65f7196d3fdd87a9d22abf004f4e029465e07a19f714",
-            "78fc6b746ad6b5909c817f41037c0b297e56b9c1f734834b5243ed8ddf62c833",
-            "66a1ab1e87e085a88723e38e6974b4f21031fe289f4a8d29ad28558252bd18c4",
-            "934aecb49b901810f1437cfd527924577279b5892614e06d90a0cafa79cb36b5",
-            "2f7160b7d621cf34053e7803634b947f503542b1b3766424edbb756455e83923",
-            "aad666639ab4f3aa412d1e1eae256e0cac09f6132bed4f6b6577bba1578bdf35",
-        ]
+        formal_units = [unit.unit_id for unit in extraction.units]
         check_report = run_deterministic_checks(
             source, ROOT / "po/zh_CN.po", formal_units
         )
@@ -309,7 +306,7 @@ class RepositoryBaselineTests(unittest.TestCase):
             current_glossary_hash=sha256(ROOT / "glossary/terms.csv"),
             obsolete_count=po.obsolete_count,
         )
-        self.assertEqual(report["counts"], {"formal": 6, "untranslated": 6910})
+        self.assertEqual(report["counts"], {"formal": 6916})
         self.assertEqual(report["obsolete_count"], 20)
         validate_file(report, "schemas/status.schema.json")
 

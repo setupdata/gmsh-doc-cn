@@ -13,6 +13,7 @@ from gmsh_doc_cn.artifacts import write_artifact_manifest
 from gmsh_doc_cn.catalog import extract_tree, read_po_catalog, write_po
 from gmsh_doc_cn.cli import main
 from gmsh_doc_cn.preview import (
+    _decorate_preview_pages,
     _localize_texinfo_chrome,
     build_preview_site,
     derive_preview_status,
@@ -28,6 +29,33 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PreviewBuildTests(unittest.TestCase):
+    def test_complete_preview_does_not_claim_english_fallback(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            page = root / "index.html"
+            page.write_text(
+                '<html lang="zh-CN"><head></head><body><p>完整译文</p></body></html>',
+                encoding="utf-8",
+            )
+
+            count, paths = _decorate_preview_pages(
+                root,
+                site_base="/gmsh-doc-cn/",
+                version="4.15.2",
+                upstream_tag="gmsh_4_15_2",
+                upstream_commit="657c8e915f60405e6cad0c8ec7faf812bfff1a60",
+                translation_revision="r1",
+                translation_date="2026-08-18",
+                has_english_fallback=False,
+            )
+
+            rendered = page.read_text(encoding="utf-8")
+            self.assertEqual((count, paths), (1, ("index.html",)))
+            self.assertIn('data-translation-state="complete"', rendered)
+            self.assertIn('<meta name="robots" content="noindex,nofollow">', rendered)
+            self.assertIn("全部可翻译内容均已通过审校和自动检查", rendered)
+            self.assertNotIn("英文回退", rendered)
+
     def _fixture(self, root: Path):
         source = root / "source"
         texinfo = source / "doc" / "texinfo"
@@ -431,6 +459,11 @@ class PreviewBuildTests(unittest.TestCase):
                 (ROOT / "schemas/preview-build.schema.json").read_text(encoding="utf-8")
             )
             validate_schema(report, schema)
+            complete_report = copy.deepcopy(report)
+            complete_report["formal_unit_count"] = complete_report["unit_count"]
+            complete_report["fallback_unit_count"] = 0
+            complete_report["english_fallback_marker_page_count"] = 0
+            validate_schema(complete_report, schema)
             self.assertEqual(
                 report["formal_unit_count"] + report["fallback_unit_count"],
                 report["unit_count"],
@@ -521,8 +554,7 @@ class PreviewBuildTests(unittest.TestCase):
                 str(reviews),
                 "--review-manifest",
                 str(review_manifest),
-                "--check-unit",
-                formal_unit.unit_id,
+                "--check-all",
                 "--rules",
                 str(rules),
                 "--glossary",
