@@ -370,7 +370,15 @@ def command_reproducible(args: argparse.Namespace) -> None:
         )
         if any(values != expected_warnings for values in warning_sets):
             raise SystemExit(
-                "English build warnings differ from tests/baselines/texinfo-warnings.json"
+                "English build warnings differ from tests/baselines/texinfo-warnings.json: "
+                + json.dumps(
+                    {
+                        "expected": expected_warnings,
+                        "actual": warning_sets,
+                    },
+                    ensure_ascii=False,
+                    sort_keys=True,
+                )
             )
         output = Path(args.output)
         output.parent.mkdir(parents=True, exist_ok=True)
