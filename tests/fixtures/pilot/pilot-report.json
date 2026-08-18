@@ -28,7 +28,7 @@
   "smoke_validation": "pass",
   "structure_record_count": 538,
   "term_candidate_count": 150,
-  "texinfo_warning_baseline_sha256": "a1be2f87d2c196f4a05f3c2e4adef8ca1ffd6d6311000492d17a0a7cef3eb1b6",
+  "texinfo_warning_baseline_sha256": "6d28ae8b018a6d59bf6d195bdd48dd4f69e969a9b9a4066f80c9f869878e7246",
   "tool_lock_sha256": "8bbd1265d7467c89dc6b3b89e03e7d696f60068484074ff99cbe697e1c2386b1",
   "tool_versions": {
     "gettext": "0.23.1-2",

@@ -1,11 +1,5 @@
 {
   "schema_version": 1,
   "tool": "GNU Texinfo",
-  "warnings": [
-    {
-      "fingerprint": "GNU Texinfo|Texinfo/Convert/LaTeX.pm|Possible precedence problem between ! and string eq",
-      "message": "Possible precedence problem between ! and string eq",
-      "relative_file": "Texinfo/Convert/LaTeX.pm"
-    }
-  ]
+  "warnings": []
 }
