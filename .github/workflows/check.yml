@@ -130,7 +130,10 @@ jobs:
 
       - name: Add the GitHub Pages landing page
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: install --mode=0644 site/index.html build/preview-site/index.html
+        run: >-
+          docker run --rm --volume "$PWD:/workspace"
+          --entrypoint /usr/bin/install gmsh-doc-cn:check
+          --mode=0644 site/index.html build/preview-site/index.html
 
       - name: Upload the GitHub Pages artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
