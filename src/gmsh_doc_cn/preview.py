@@ -674,7 +674,13 @@ def build_preview_site(
     preview_root = dist_root / "preview" / f"v{version}" / "zh-cn"
     with tempfile.TemporaryDirectory(prefix="gmsh-doc-cn-preview-") as directory:
         translated_source = Path(directory) / "source"
-        apply_catalog(source_root, translated_source, extraction.units, staged_catalog)
+        apply_catalog(
+            source_root,
+            translated_source,
+            extraction.units,
+            staged_catalog,
+            preserve_index_sorting=True,
+        )
         _set_texinfo_document_language(translated_source)
         english = build_html_site(
             source_root,

@@ -814,8 +814,14 @@ def apply_catalog(
     output_root: Path,
     units: Iterable[TranslationUnit],
     catalog: Mapping[str, str],
+    *,
+    preserve_index_sorting: bool = False,
 ) -> None:
-    """Copy a source tree and apply validated non-empty translations."""
+    """Copy a source tree and apply validated non-empty translations.
+
+    Preview builds can retain each translated index entry's source-language
+    sort key so Texinfo emits the same index groups and stable anchors.
+    """
 
     source_root = Path(source_root).resolve()
     output_root = Path(output_root).resolve()
@@ -845,7 +851,20 @@ def apply_catalog(
             original = _normalise(text[unit.start : unit.end])
             if original != unit.msgid:
                 raise ValueError(f"source text changed for {unit.unit_id}")
-            text = text[: unit.start] + candidate + text[unit.end :]
+            replacement = candidate
+            if preserve_index_sorting and unit.role == "index":
+                sort_key = unit.msgid
+                previous = None
+                while previous != sort_key:
+                    previous = sort_key
+                    sort_key = re.sub(r"@var\{([^{}]*)\}", r"\1", sort_key)
+                unsupported = re.search(r"@(?![@{}])", sort_key)
+                if unsupported is not None:
+                    raise ValueError(
+                        f"unsupported Texinfo command in index sort key for {unit.unit_id}"
+                    )
+                replacement = f"{candidate} @sortas{{{sort_key}}}"
+            text = text[: unit.start] + replacement + text[unit.end :]
             changed = True
         if changed:
             (output_root / relative).write_bytes(text.encode("utf-8"))

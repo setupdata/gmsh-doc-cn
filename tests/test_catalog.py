@@ -312,6 +312,59 @@ class CatalogTests(unittest.TestCase):
                 (output / "CREDITS.txt").read_text(encoding="utf-8"),
             )
 
+    def test_preview_mode_preserves_source_index_sort_keys(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source"
+            texinfo = source / "doc" / "texinfo"
+            texinfo.mkdir(parents=True)
+            (texinfo / "gmsh.texi").write_text(
+                "@node Top\n@chapter Manual\n\n"
+                "@cindex Concepts, index\n"
+                "@findex @var{operator-unary-left}\n"
+                "@findex GeoEntity @{ @var{expression} @}\n",
+                encoding="utf-8",
+            )
+            extraction = extract_tree(source)
+            indexes = [unit for unit in extraction.units if unit.role == "index"]
+            catalog = {
+                indexes[0].msgctxt: "概念，索引",
+                indexes[1].msgctxt: "@var{operator-unary-left}",
+                indexes[2].msgctxt: "GeoEntity @{ @var{expression} @}",
+            }
+
+            ordinary = root / "ordinary"
+            apply_catalog(source, ordinary, extraction.units, catalog)
+            ordinary_text = (ordinary / "doc" / "texinfo" / "gmsh.texi").read_text(
+                encoding="utf-8"
+            )
+            self.assertIn("@cindex 概念，索引\n", ordinary_text)
+            self.assertNotIn("@sortas{", ordinary_text)
+
+            preview = root / "preview"
+            apply_catalog(
+                source,
+                preview,
+                extraction.units,
+                catalog,
+                preserve_index_sorting=True,
+            )
+            preview_text = (preview / "doc" / "texinfo" / "gmsh.texi").read_text(
+                encoding="utf-8"
+            )
+            self.assertIn(
+                "@cindex 概念，索引 @sortas{Concepts, index}\n", preview_text
+            )
+            self.assertIn(
+                "@findex @var{operator-unary-left} @sortas{operator-unary-left}\n",
+                preview_text,
+            )
+            self.assertIn(
+                "@findex GeoEntity @{ @var{expression} @} "
+                "@sortas{GeoEntity @{ expression @}}\n",
+                preview_text,
+            )
+
     def test_real_release_empty_round_trip_preserves_structure_and_bytes(self) -> None:
         repository = Path(__file__).resolve().parents[1]
         source = Path(
